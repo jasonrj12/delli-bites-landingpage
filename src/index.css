@@ -63,3 +63,21 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #d97706;
 }
+
+/* Dot Dot Pulse Loader Animation */
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.75);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+    background-color: #f59e0b;
+    box-shadow: 0 0 12px rgba(217, 119, 6, 0.6);
+  }
+}
+
+.animate-dot-pulse {
+  animation: dotPulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
