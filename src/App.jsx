@@ -9,11 +9,16 @@ import AppPromo from './components/AppPromo';
 import Testimonials from './components/Testimonials';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import PageLoader from './components/PageLoader';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <div className="min-h-screen bg-[#0e0b09] text-[#f5f0e6] relative selection:bg-[#d97706] selection:text-black">
-      
+
+      {/* Page load animation */}
+      <PageLoader />
+
       {/* Fixed Minimal Navigation */}
       <Navbar />
 
@@ -46,6 +51,9 @@ export default function App() {
 
       {/* Footer with Tokri Heritage Logo */}
       <Footer />
+
+      {/* Scroll-to-top button */}
+      <ScrollToTop />
 
     </div>
   );
