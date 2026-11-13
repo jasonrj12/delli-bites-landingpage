@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, MapPin, Phone, Mail } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 
 export default function Footer() {
@@ -34,14 +34,36 @@ export default function Footer() {
         {/* Middle: Details & Social Links */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 py-12 border-b border-white/10 text-left">
           
-          <div className="md:col-span-5 space-y-3">
+          <div className="md:col-span-5 space-y-4">
             <span className="text-[11px] uppercase tracking-[0.2em] text-[#d97706] font-semibold block">
               CONTACT US
             </span>
-            <div className="text-sm space-y-1.5 text-[#c9c0b3]">
-              <p className="text-[#f5f0e6] font-serif text-lg">Address: 40 Windsor Street UB8 1AB</p>
-              <p>Email: <a href={`mailto:${RESTAURANT_INFO.email}`} className="text-[#f5f0e6] hover:underline">{RESTAURANT_INFO.email}</a></p>
-              <p>Phone: <a href={`tel:${RESTAURANT_INFO.phone}`} className="text-[#f5f0e6] hover:underline">{RESTAURANT_INFO.displayPhone}</a></p>
+            <div className="text-sm space-y-2.5 text-[#c9c0b3]">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-[#d97706] shrink-0 mt-0.5" />
+                <span>
+                  <span className="text-[#9b9185]">Address:</span>{' '}
+                  <span className="text-[#f5f0e6]">40 Windsor Street UB8 1AB</span>
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-[#d97706] shrink-0" />
+                <span>
+                  <span className="text-[#9b9185]">Email:</span>{' '}
+                  <a href={`mailto:${RESTAURANT_INFO.email}`} className="text-[#f5f0e6] hover:text-[#d97706] transition-colors hover:underline">
+                    {RESTAURANT_INFO.email}
+                  </a>
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-[#d97706] shrink-0" />
+                <span>
+                  <span className="text-[#9b9185]">Phone:</span>{' '}
+                  <a href={`tel:${RESTAURANT_INFO.phone}`} className="text-[#f5f0e6] hover:text-[#d97706] transition-colors hover:underline">
+                    {RESTAURANT_INFO.displayPhone}
+                  </a>
+                </span>
+              </div>
             </div>
           </div>
 
