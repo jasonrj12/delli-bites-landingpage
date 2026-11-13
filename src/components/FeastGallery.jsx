@@ -94,18 +94,10 @@ export default function FeastGallery() {
               alt="Delli Bites Culinary"
               className="max-h-[75vh] w-auto object-contain border border-white/10"
             />
-            <div className="mt-4 flex items-center gap-4">
+            <div className="mt-4">
               <span className="text-xs text-[#9b9185]">
                 {selectedIdx + 1} of {GALLERY_IMAGES.length}
               </span>
-              <a
-                href={RESTAURANT_INFO.links.orderOnline}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-semibold uppercase tracking-wider text-[#d97706] hover:underline"
-              >
-                Order Online →
-              </a>
             </div>
           </div>
         </div>

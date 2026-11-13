@@ -103,15 +103,7 @@ export default function AppPromo() {
                 </div>
               </a>
 
-              {/* Web Order Direct */}
-              <a
-                href={RESTAURANT_INFO.links.orderOnline}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-2.5 rounded-full bg-[#d97706] hover:bg-[#e59a35] text-black font-bold text-xs uppercase tracking-wider transition-all"
-              >
-                Web Ordering
-              </a>
+
 
             </div>
 

@@ -48,18 +48,7 @@ export default function ExperienceStory() {
               </p>
             </div>
 
-            {/* Minimalist CTA */}
-            <div className="pt-2">
-              <a
-                href={RESTAURANT_INFO.links.bookTable}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#d97706] hover:text-[#f5f0e6] transition-colors py-1 border-b border-[#d97706] hover:border-white pb-0.5"
-              >
-                <span>Reserve Your Table Today</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
+
 
           </div>
 

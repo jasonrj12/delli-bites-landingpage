@@ -48,17 +48,7 @@ export default function SignatureSelection() {
               Discover our signature collection of Indian favourites, from rich and creamy Butter Chicken and fiery Chicken 65 to perfectly chargrilled Ajwaini Paneer Tikka and the aromatic, slow-cooked goodness of Kashmiri Lamb Roganjosh. Every dish is a celebration of authentic spices, bold flavours and culinary passion.
             </p>
 
-            <div className="pt-2">
-              <a
-                href={RESTAURANT_INFO.links.orderOnline}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#d97706] hover:text-[#f5f0e6] border-b border-[#d97706] hover:border-white pb-0.5 transition-colors"
-              >
-                <span>Order These Dishes</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
+
           </div>
 
         </div>
@@ -79,17 +69,7 @@ export default function SignatureSelection() {
               Experience the soul of Indian cuisine through rich curries, aromatic spices and lovingly prepared delicacies. From traditional favourites to unique house creations, every dish brings together authentic flavours, passion and a little taste of home.
             </p>
 
-            <div className="pt-2">
-              <a
-                href={RESTAURANT_INFO.links.orderOnline}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#d97706] hover:text-[#f5f0e6] border-b border-[#d97706] hover:border-white pb-0.5 transition-colors"
-              >
-                <span>Explore Comfort Menu</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
+
           </div>
 
           <div className="lg:col-span-7 order-1 lg:order-2">
@@ -142,17 +122,7 @@ export default function SignatureSelection() {
               Enjoy an impressive selection of refreshing beverages, premium spirits, fine wines and international favourites. Beautifully served and thoughtfully selected to complement every occasion.
             </p>
 
-            <div className="pt-2">
-              <a
-                href={RESTAURANT_INFO.links.bookTable}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#d97706] hover:text-[#f5f0e6] border-b border-[#d97706] hover:border-white pb-0.5 transition-colors"
-              >
-                <span>Book a Table & Sip</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
+
           </div>
 
         </div>

@@ -27,25 +27,7 @@ export default function Footer() {
             The vibrant flavours of Indian cuisine await you at 40 Windsor St, Uxbridge UB8 1AB, United Kingdom. Our cosy restaurant is designed to blend tradition with modern comfort, offering inviting seating and a friendly atmosphere perfect for you and your loved ones.
           </p>
 
-          {/* Core Action Links */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <a
-              href={RESTAURANT_INFO.links.orderOnline}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-black bg-[#d97706] hover:bg-[#e59a35] transition-all"
-            >
-              Order Online
-            </a>
-            <a
-              href={RESTAURANT_INFO.links.bookTable}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#f5f0e6] border border-white/20 hover:border-white/50 transition-all"
-            >
-              Book a Table
-            </a>
-          </div>
+
 
         </div>
 
