@@ -4,19 +4,19 @@ import { GALLERY_IMAGES, DRIVE_CDN } from '../data/restaurantData';
 
 const BENTO_SPANS = [
   // Item 0: Large Anchor Hero
-  "col-span-1 sm:col-span-2 lg:col-span-2 lg:row-span-2 min-h-[300px] sm:min-h-[400px] lg:min-h-[580px]",
+  "col-span-1 sm:col-span-2 lg:col-span-2 lg:row-span-2 h-[280px] sm:h-[320px] lg:h-full lg:min-h-[584px]",
   // Item 1: Top right 1
-  "col-span-1 sm:col-span-1 lg:col-span-1 min-h-[240px] sm:min-h-[280px]",
+  "col-span-1 sm:col-span-1 lg:col-span-1 h-[250px] sm:h-[280px] lg:h-full",
   // Item 2: Top right 2
-  "col-span-1 sm:col-span-1 lg:col-span-1 min-h-[240px] sm:min-h-[280px]",
+  "col-span-1 sm:col-span-1 lg:col-span-1 h-[250px] sm:h-[280px] lg:h-full",
   // Item 3: Wide middle card
-  "col-span-1 sm:col-span-2 lg:col-span-2 min-h-[240px] sm:min-h-[280px]",
+  "col-span-1 sm:col-span-2 lg:col-span-2 h-[250px] sm:h-[280px] lg:h-full",
   // Item 4: Bottom left
-  "col-span-1 sm:col-span-1 lg:col-span-1 min-h-[240px] sm:min-h-[280px]",
+  "col-span-1 sm:col-span-1 lg:col-span-1 h-[250px] sm:h-[280px] lg:h-full",
   // Item 5: Bottom center panoramic
-  "col-span-1 sm:col-span-1 lg:col-span-2 min-h-[240px] sm:min-h-[280px]",
+  "col-span-1 sm:col-span-1 lg:col-span-2 h-[250px] sm:h-[280px] lg:h-full",
   // Item 6: Bottom right
-  "col-span-1 sm:col-span-2 lg:col-span-1 min-h-[240px] sm:min-h-[280px]",
+  "col-span-1 sm:col-span-2 lg:col-span-1 h-[250px] sm:h-[280px] lg:h-full",
 ];
 
 export default function FeastGallery() {
@@ -53,7 +53,7 @@ export default function FeastGallery() {
         </div>
 
         {/* Pure Photographic Bento Grid (No dish names) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 auto-rows-[240px] sm:auto-rows-[280px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-5 lg:gap-6 auto-rows-auto lg:auto-rows-[280px]">
           {GALLERY_IMAGES.map((img, idx) => {
             const spanClass = BENTO_SPANS[idx] || BENTO_SPANS[0];
             return (
