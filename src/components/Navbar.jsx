@@ -143,12 +143,6 @@ export default function Navbar() {
               >
                 Book a Table
               </a>
-              <a
-                href={`tel:${RESTAURANT_INFO.phone}`}
-                className="text-center text-xs tracking-wider text-[#d97706] pt-2"
-              >
-                Call {RESTAURANT_INFO.displayPhone}
-              </a>
             </div>
           </div>
         </div>
