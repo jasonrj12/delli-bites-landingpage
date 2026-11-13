@@ -1,199 +1,119 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Calendar, ShoppingBag, ExternalLink, Heart } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 
-export default function Footer({ onOpenReservation, onOpenOrder }) {
+export default function Footer() {
   return (
-    <footer className="relative bg-[#080504] border-t border-[#D97706]/20 text-[#D1C7BD] pt-16 pb-12 overflow-hidden">
-      
-      {/* Background ambience */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-60 bg-[#D97706]/5 rounded-full filter blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <footer className="bg-[#080605] border-t border-white/10 text-[#9b9185] pt-20 pb-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
+        {/* Top: Tokri Heritage Logo & Closing Paragraph (per client prompt) */}
+        <div className="max-w-3xl mx-auto text-center space-y-6 pb-16 border-b border-white/10">
           
-          {/* Column 1: Brand & Tokri-style Logo + Description */}
-          <div className="lg:col-span-5 space-y-5 text-left">
-            
-            {/* Logo same as tokri */}
-            <div className="footer-logo">
-              <img
-                src="/assets/tokri_footer.png"
-                alt="Delli Bites / Tokri Heritage Logo"
-                className="h-14 sm:h-16 w-auto object-contain filter brightness-110 drop-shadow-md"
-                onError={(e) => {
-                  e.target.src = '/assets/delli_logo.png';
-                }}
-              />
-            </div>
-
-            {/* Exact wording from user request */}
-            <p className="text-sm text-[#A89F91] leading-relaxed font-light max-w-md">
-              The vibrant flavours of Indian cuisine await you at 40 Windsor St, Uxbridge UB8 1AB, United Kingdom. Our cosy restaurant is designed to blend tradition with modern comfort, offering inviting seating and a friendly atmosphere perfect for you and your loved ones.
-            </p>
-
-            {/* Social & Directory Links */}
-            <div className="pt-2">
-              <span className="text-xs uppercase tracking-wider font-bold text-[#F59E0B] block mb-3">
-                Follow & Review Us
-              </span>
-              <div className="flex flex-wrap items-center gap-3">
-                
-                {/* Instagram */}
-                <a
-                  href={RESTAURANT_INFO.socials.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-[#18120E] border border-white/10 hover:border-[#D97706] hover:bg-[#D97706] text-white hover:text-black flex items-center justify-center transition-all shadow-md group"
-                  aria-label="Delli Bites Instagram"
-                >
-                  <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                </a>
-
-                {/* Facebook */}
-                <a
-                  href={RESTAURANT_INFO.socials.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-[#18120E] border border-white/10 hover:border-[#D97706] hover:bg-[#D97706] text-white hover:text-black flex items-center justify-center transition-all shadow-md group"
-                  aria-label="Delli Bites Facebook"
-                >
-                  <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.667 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z"/>
-                  </svg>
-                </a>
-
-                {/* TripAdvisor */}
-                <a
-                  href={RESTAURANT_INFO.socials.tripadvisor}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3.5 py-2 rounded-full bg-[#18120E] border border-white/10 hover:border-[#00aa6c] hover:bg-[#00aa6c]/20 text-white flex items-center gap-1.5 text-xs font-semibold transition-all shadow-md"
-                  aria-label="Delli Bites TripAdvisor"
-                >
-                  <span className="w-2 h-2 rounded-full bg-[#00aa6c]" />
-                  <span>TripAdvisor</span>
-                </a>
-
-                {/* TheFork */}
-                <a
-                  href={RESTAURANT_INFO.socials.thefork}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3.5 py-2 rounded-full bg-[#18120E] border border-white/10 hover:border-[#00a896] hover:bg-[#00a896]/20 text-white flex items-center gap-1.5 text-xs font-semibold transition-all shadow-md"
-                  aria-label="Delli Bites TheFork"
-                >
-                  <span className="w-2 h-2 rounded-full bg-[#00a896]" />
-                  <span>TheFork</span>
-                </a>
-
-              </div>
-            </div>
-
+          {/* Logo same as tokri */}
+          <div className="flex justify-center">
+            <img
+              src="/assets/tokri_footer.png"
+              alt="Delli Bites / Tokri Heritage Logo"
+              className="h-14 sm:h-16 w-auto object-contain filter brightness-110"
+              onError={(e) => {
+                e.target.src = '/assets/delli_logo.png';
+              }}
+            />
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="lg:col-span-3 space-y-4 text-left">
-            <h4 className="font-serif text-lg font-bold text-white tracking-wide border-b border-[#D97706]/30 pb-2 inline-block">
-              Quick Links
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <a href="#story" className="hover:text-[#F59E0B] transition-colors">Our Story & Ambience</a>
-              </li>
-              <li>
-                <a href="#signatures" className="hover:text-[#F59E0B] transition-colors">Signature Favourites</a>
-              </li>
-              <li>
-                <a href="#drinks" className="hover:text-[#F59E0B] transition-colors">Craft Pours & Cocktails</a>
-              </li>
-              <li>
-                <a href="#gallery" className="hover:text-[#F59E0B] transition-colors">Table Feast Gallery</a>
-              </li>
-              <li>
-                <a href="#app" className="hover:text-[#F59E0B] transition-colors">Mobile App & 15% Savings</a>
-              </li>
-              <li>
-                <a href="#reviews" className="hover:text-[#F59E0B] transition-colors">Verified Customer Reviews</a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-[#F59E0B] transition-colors">Location & Map</a>
-              </li>
-            </ul>
-          </div>
+          {/* Exact wording from user prompt */}
+          <p className="font-serif text-base sm:text-lg text-[#c9c0b3] font-light leading-relaxed">
+            The vibrant flavours of Indian cuisine await you at 40 Windsor St, Uxbridge UB8 1AB, United Kingdom. Our cosy restaurant is designed to blend tradition with modern comfort, offering inviting seating and a friendly atmosphere perfect for you and your loved ones.
+          </p>
 
-          {/* Column 3: Contact Details (exact match to prompt) */}
-          <div className="lg:col-span-4 space-y-4 text-left">
-            <h4 className="font-serif text-lg font-bold text-white tracking-wide border-b border-[#D97706]/30 pb-2 inline-block">
-              CONTACT US
-            </h4>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-[#D97706] flex-shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-white font-medium">Address:</div>
-                  <div className="text-[#A89F91]">40 Windsor Street UB8 1AB</div>
-                  <div className="text-xs text-[#716960]">Uxbridge, Greater London</div>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-[#D97706] flex-shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-white font-medium">Email:</div>
-                  <a href={`mailto:${RESTAURANT_INFO.email}`} className="text-[#A89F91] hover:text-[#F59E0B] transition-colors">
-                    {RESTAURANT_INFO.email}
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-[#D97706] flex-shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-white font-medium">Phone:</div>
-                  <a href={`tel:${RESTAURANT_INFO.phone}`} className="text-[#FAF6EE] font-semibold hover:text-[#F59E0B] transition-colors">
-                    {RESTAURANT_INFO.displayPhone}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-2 flex gap-3">
-              <a
-                href={RESTAURANT_INFO.links.orderOnline}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#D97706] hover:bg-[#F59E0B] transition-colors flex items-center gap-1.5"
-              >
-                <ShoppingBag className="w-3.5 h-3.5" />
-                <span>Order Online</span>
-              </a>
-              <a
-                href={RESTAURANT_INFO.links.bookTable}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white border border-[#D97706]/50 hover:bg-[#D97706]/15 transition-colors flex items-center gap-1.5"
-              >
-                <Calendar className="w-3.5 h-3.5 text-[#D97706]" />
-                <span>Book Table</span>
-              </a>
-            </div>
+          {/* Core Action Links */}
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <a
+              href={RESTAURANT_INFO.links.orderOnline}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-black bg-[#d97706] hover:bg-[#e59a35] transition-all"
+            >
+              Order Online
+            </a>
+            <a
+              href={RESTAURANT_INFO.links.bookTable}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#f5f0e6] border border-white/20 hover:border-white/50 transition-all"
+            >
+              Book a Table
+            </a>
           </div>
 
         </div>
 
-        {/* Bottom Copyright & Legal line */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#716960] gap-4">
-          <div>
-            © {new Date().getFullYear()} Delli Bites Restaurant. All rights reserved. 40 Windsor Street, Uxbridge.
+        {/* Middle: Details & Social Links */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 py-12 border-b border-white/10 text-left">
+          
+          <div className="md:col-span-5 space-y-3">
+            <span className="text-[11px] uppercase tracking-[0.2em] text-[#d97706] font-semibold block">
+              CONTACT US
+            </span>
+            <div className="text-sm space-y-1.5 text-[#c9c0b3]">
+              <p className="text-[#f5f0e6] font-serif text-lg">Address: 40 Windsor Street UB8 1AB</p>
+              <p>Email: <a href={`mailto:${RESTAURANT_INFO.email}`} className="text-[#f5f0e6] hover:underline">{RESTAURANT_INFO.email}</a></p>
+              <p>Phone: <a href={`tel:${RESTAURANT_INFO.phone}`} className="text-[#f5f0e6] hover:underline">{RESTAURANT_INFO.displayPhone}</a></p>
+            </div>
           </div>
-          <div className="flex items-center gap-1 text-[#A89F91]">
-            <span>Crafted with</span>
-            <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 inline" />
-            <span>for authentic Indian gastronomy</span>
+
+          <div className="md:col-span-7 flex flex-wrap items-center md:justify-end gap-x-8 gap-y-3 text-xs uppercase tracking-[0.15em] font-medium text-[#c9c0b3]">
+            <a
+              href={RESTAURANT_INFO.socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors flex items-center gap-1"
+            >
+              <span>Instagram</span>
+              <ArrowUpRight className="w-3 h-3 text-[#d97706]" />
+            </a>
+
+            <a
+              href={RESTAURANT_INFO.socials.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors flex items-center gap-1"
+            >
+              <span>Facebook</span>
+              <ArrowUpRight className="w-3 h-3 text-[#d97706]" />
+            </a>
+
+            <a
+              href={RESTAURANT_INFO.socials.tripadvisor}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors flex items-center gap-1"
+            >
+              <span>TripAdvisor</span>
+              <ArrowUpRight className="w-3 h-3 text-[#d97706]" />
+            </a>
+
+            <a
+              href={RESTAURANT_INFO.socials.thefork}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors flex items-center gap-1"
+            >
+              <span>TheFork</span>
+              <ArrowUpRight className="w-3 h-3 text-[#d97706]" />
+            </a>
+          </div>
+
+        </div>
+
+        {/* Bottom line */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#736a5f] gap-4">
+          <div>
+            © {new Date().getFullYear()} Delli Bites Restaurant. 40 Windsor Street, Uxbridge.
+          </div>
+          <div>
+            Authentic Indian Gastronomy & Hospitality
           </div>
         </div>
 

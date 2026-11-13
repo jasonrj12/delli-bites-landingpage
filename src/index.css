@@ -3,56 +3,63 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-primary: #0e0b09;
+    --bg-surface: #15110d;
+    --bg-card: #1c1612;
+    --text-primary: #f5f0e6;
+    --text-muted: #9b9185;
+    --accent: #d97706;
+  }
+
   html {
     scroll-behavior: smooth;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
   }
 
   body {
-    background-color: #0c0907;
-    color: #FAF6EE;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Glassmorphism and ambient glow utilities */
-.glass-panel {
-  background: rgba(21, 16, 13, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(217, 119, 6, 0.15);
+/* Subtle, tasteful micro-interactions (per taste-skill rules) */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
 }
 
-.glass-panel-light {
-  background: rgba(31, 23, 19, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(245, 158, 11, 0.12);
+.photo-frame {
+  overflow: hidden;
+  background-color: #17120e;
 }
 
-.gold-gradient-text {
-  background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.photo-frame img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.warm-gradient-text {
-  background: linear-gradient(135deg, #FFFDF9 0%, #FAF6EE 60%, #E5A93C 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.photo-frame:hover img {
+  transform: scale(1.025);
 }
 
-/* Custom scrollbar */
+/* Custom minimal scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0907;
+  background: #0e0b09;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a1f18;
-  border-radius: 4px;
+  background: #231b15;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D97706;
+  background: #d97706;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import TrustBadges from './components/TrustBadges';
@@ -9,75 +9,43 @@ import AppPromo from './components/AppPromo';
 import Testimonials from './components/Testimonials';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
-import ReservationModal from './components/ReservationModal';
-import OrderModal from './components/OrderModal';
 
 export default function App() {
-  const [reservationOpen, setReservationOpen] = useState(false);
-  const [orderOpen, setOrderOpen] = useState(false);
-
   return (
-    <div className="min-h-screen bg-[#0c0907] text-[#FAF6EE] relative selection:bg-[#D97706] selection:text-black">
+    <div className="min-h-screen bg-[#0e0b09] text-[#f5f0e6] relative selection:bg-[#d97706] selection:text-black">
       
-      {/* Sticky Navigation Bar */}
-      <Navbar
-        onOpenReservation={() => setReservationOpen(true)}
-        onOpenOrder={() => setOrderOpen(true)}
-      />
+      {/* Fixed Minimal Navigation */}
+      <Navbar />
 
-      {/* Main Page Sections */}
+      {/* Main Content Sections */}
       <main>
-        {/* Header / Hero Section */}
-        <Hero
-          onOpenReservation={() => setReservationOpen(true)}
-          onOpenOrder={() => setOrderOpen(true)}
-        />
+        {/* First Screen: Photographic Hero */}
+        <Hero />
 
-        {/* Accreditations & Trust Honours Ribbon (FSA 5, Restaurant Guru Awards) */}
+        {/* Accreditations Ribbon (FSA 5, Restaurant Guru Awards) */}
         <TrustBadges />
 
-        {/* Experience the True Taste of India in Uxbridge */}
-        <ExperienceStory
-          onOpenReservation={() => setReservationOpen(true)}
-        />
+        {/* The True Taste of India in Uxbridge */}
+        <ExperienceStory />
 
-        {/* Our Signature Selection: Finest Creations, Indian Comfort, Perfect Pour */}
-        <SignatureSelection
-          onOpenOrder={() => setOrderOpen(true)}
-        />
+        {/* Our Signature Selection: 3 Culinary Chapters */}
+        <SignatureSelection />
 
-        {/* Your Table, Your Taste, Your Experience (7 Feast Photographs) */}
-        <FeastGallery
-          onOpenOrder={() => setOrderOpen(true)}
-        />
+        {/* The Feast: 7 High-resolution Dishes */}
+        <FeastGallery />
 
-        {/* MORE FOOD. LESS FEES. MORE SAVINGS! (App promotion & savings) */}
+        {/* App & Direct Savings */}
         <AppPromo />
 
-        {/* The Love Behind Every Visit (Guest reviews) */}
+        {/* The Love Behind Every Visit (Guest Quotes) */}
         <Testimonials />
 
-        {/* Contact Us & Map Location */}
+        {/* Location, Hours & Map */}
         <ContactSection />
       </main>
 
-      {/* Bottom Footer Section (with Tokri logo & address) */}
-      <Footer
-        onOpenReservation={() => setReservationOpen(true)}
-        onOpenOrder={() => setOrderOpen(true)}
-      />
-
-      {/* Interactive Reservation Modal */}
-      <ReservationModal
-        isOpen={reservationOpen}
-        onClose={() => setReservationOpen(false)}
-      />
-
-      {/* Interactive Online Ordering Modal */}
-      <OrderModal
-        isOpen={orderOpen}
-        onClose={() => setOrderOpen(false)}
-      />
+      {/* Footer with Tokri Heritage Logo */}
+      <Footer />
 
     </div>
   );
