@@ -130,41 +130,13 @@ export const SIGNATURE_SECTIONS = [
 ];
 
 export const GALLERY_IMAGES = [
-  {
-    id: "1BMW_Aukz5wH0Dk22fv6RcUcxQZJd31CR",
-    title: "Chargrilled Tandoori Platter",
-    category: "Tandoor"
-  },
-  {
-    id: "1KJFJ-CcFCTG5L8xcORYd44u8zwtylQdU",
-    title: "Slow-Braised Rich Rogan Josh",
-    category: "Curries"
-  },
-  {
-    id: "1l1-mpbTlLJtMbzIcbuSuuuTP0xI1cF0_",
-    title: "Delhi Street Samosa Chaat & Crisps",
-    category: "Starters"
-  },
-  {
-    id: "1M_UH6FomSbpinbMVThAW8HwUMATvApjU",
-    title: "Aromatic Fragrant Dum Biryani",
-    category: "Biryani"
-  },
-  {
-    id: "1SmBOhZuUIoKH8SLsb04kXLW9yIopeXKD",
-    title: "Freshly Baked Garlic & Butter Naan",
-    category: "Breads"
-  },
-  {
-    id: "1E7lWu_BNOUBDJD5Tuwp8bpUb2u0NKgtm",
-    title: "Royal North-Indian Curry Spread",
-    category: "Specialities"
-  },
-  {
-    id: "1x9zftvlU0JoSxQvigcJPJHJiT5asQSwa",
-    title: "Artisanal Spice-Infused Cocktail",
-    category: "Beverages"
-  }
+  { id: "1BMW_Aukz5wH0Dk22fv6RcUcxQZJd31CR" },
+  { id: "1KJFJ-CcFCTG5L8xcORYd44u8zwtylQdU" },
+  { id: "1l1-mpbTlLJtMbzIcbuSuuuTP0xI1cF0_" },
+  { id: "1M_UH6FomSbpinbMVThAW8HwUMATvApjU" },
+  { id: "1SmBOhZuUIoKH8SLsb04kXLW9yIopeXKD" },
+  { id: "1E7lWu_BNOUBDJD5Tuwp8bpUb2u0NKgtm" },
+  { id: "1x9zftvlU0JoSxQvigcJPJHJiT5asQSwa" }
 ];
 
 export const APP_PROMO = {

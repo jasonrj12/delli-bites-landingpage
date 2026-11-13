@@ -2,49 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
 import { GALLERY_IMAGES, DRIVE_CDN } from '../data/restaurantData';
 
-const BENTO_CONFIG = [
-  {
-    // Item 0: Chargrilled Tandoori Platter (Hero anchor)
-    gridSpan: "col-span-1 sm:col-span-2 lg:col-span-2 lg:row-span-2 min-h-[320px] sm:min-h-[420px] lg:min-h-[580px]",
-    badge: "Chef's Signature",
-    isLarge: true,
-  },
-  {
-    // Item 1: Slow-Braised Rich Rogan Josh
-    gridSpan: "col-span-1 sm:col-span-1 lg:col-span-1 min-h-[250px] sm:min-h-[280px]",
-    badge: "Slow Cooked",
-    isLarge: false,
-  },
-  {
-    // Item 2: Delhi Street Samosa Chaat & Crisps
-    gridSpan: "col-span-1 sm:col-span-1 lg:col-span-1 min-h-[250px] sm:min-h-[280px]",
-    badge: "Old Delhi Street",
-    isLarge: false,
-  },
-  {
-    // Item 3: Aromatic Fragrant Dum Biryani
-    gridSpan: "col-span-1 sm:col-span-2 lg:col-span-2 min-h-[250px] sm:min-h-[280px]",
-    badge: "Royal Dum Style",
-    isLarge: false,
-  },
-  {
-    // Item 4: Freshly Baked Garlic & Butter Naan
-    gridSpan: "col-span-1 sm:col-span-1 lg:col-span-1 min-h-[250px] sm:min-h-[280px]",
-    badge: "Clay Oven Baked",
-    isLarge: false,
-  },
-  {
-    // Item 5: Royal North-Indian Curry Spread
-    gridSpan: "col-span-1 sm:col-span-1 lg:col-span-2 min-h-[250px] sm:min-h-[280px]",
-    badge: "Grand Feast Spread",
-    isLarge: false,
-  },
-  {
-    // Item 6: Artisanal Spice-Infused Cocktail
-    gridSpan: "col-span-1 sm:col-span-2 lg:col-span-1 min-h-[250px] sm:min-h-[280px]",
-    badge: "House Mixology",
-    isLarge: false,
-  },
+const BENTO_SPANS = [
+  // Item 0: Large Anchor Hero
+  "col-span-1 sm:col-span-2 lg:col-span-2 lg:row-span-2 min-h-[300px] sm:min-h-[400px] lg:min-h-[580px]",
+  // Item 1: Top right 1
+  "col-span-1 sm:col-span-1 lg:col-span-1 min-h-[240px] sm:min-h-[280px]",
+  // Item 2: Top right 2
+  "col-span-1 sm:col-span-1 lg:col-span-1 min-h-[240px] sm:min-h-[280px]",
+  // Item 3: Wide middle card
+  "col-span-1 sm:col-span-2 lg:col-span-2 min-h-[240px] sm:min-h-[280px]",
+  // Item 4: Bottom left
+  "col-span-1 sm:col-span-1 lg:col-span-1 min-h-[240px] sm:min-h-[280px]",
+  // Item 5: Bottom center panoramic
+  "col-span-1 sm:col-span-1 lg:col-span-2 min-h-[240px] sm:min-h-[280px]",
+  // Item 6: Bottom right
+  "col-span-1 sm:col-span-2 lg:col-span-1 min-h-[240px] sm:min-h-[280px]",
 ];
 
 export default function FeastGallery() {
@@ -80,50 +52,30 @@ export default function FeastGallery() {
           </p>
         </div>
 
-        {/* Architectural Bento Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 auto-rows-[250px] sm:auto-rows-[280px]">
+        {/* Pure Photographic Bento Grid (No dish names) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 auto-rows-[240px] sm:auto-rows-[280px]">
           {GALLERY_IMAGES.map((img, idx) => {
-            const config = BENTO_CONFIG[idx] || BENTO_CONFIG[0];
+            const spanClass = BENTO_SPANS[idx] || BENTO_SPANS[0];
             return (
               <div
                 key={img.id}
                 onClick={() => setSelectedIdx(idx)}
-                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-[#140f0c] cursor-pointer transition-all duration-500 hover:border-[#d97706]/40 hover:shadow-2xl hover:shadow-black/70 ${config.gridSpan}`}
+                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-[#140f0c] cursor-pointer transition-all duration-500 hover:border-[#d97706]/40 hover:shadow-2xl hover:shadow-black/70 ${spanClass}`}
               >
                 {/* Background Plate Image */}
                 <img
                   src={DRIVE_CDN(img.id)}
-                  alt={img.title}
-                  className="w-full h-full object-cover filter contrast-[1.05] brightness-[0.9] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                  alt="Delli Bites Culinary Presentation"
+                  className="w-full h-full object-cover filter contrast-[1.05] brightness-[0.92] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out"
                   loading="lazy"
                 />
 
-                {/* Dark Contrast Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0e0b09]/95 via-[#0e0b09]/30 to-black/25 group-hover:via-[#0e0b09]/15 transition-colors duration-500 pointer-events-none" />
+                {/* Subtle Ambient Hover Vignette */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                {/* Top Badges */}
-                <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10 flex items-center gap-2 pointer-events-none">
-                  <span className="px-2.5 py-1 text-[10px] sm:text-[11px] font-mono tracking-wider uppercase bg-black/70 backdrop-blur-md text-[#d97706] border border-[#d97706]/30 rounded-full">
-                    {img.category}
-                  </span>
-                  {config.badge && (
-                    <span className="hidden sm:inline-block px-2.5 py-1 text-[10px] font-mono tracking-wider uppercase bg-white/10 backdrop-blur-md text-[#c9c0b3] border border-white/10 rounded-full">
-                      {config.badge}
-                    </span>
-                  )}
-                </div>
-
-                {/* Bottom Dish Information */}
-                <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 z-10 flex items-end justify-between gap-3 pointer-events-none">
-                  <div className="space-y-1 pr-2">
-                    <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#9b9185] block">
-                      Delli Bites Plate
-                    </span>
-                    <h3 className={`font-serif text-[#f5f0e6] font-normal leading-snug group-hover:text-[#f3d9a2] transition-colors ${config.isLarge ? 'text-xl sm:text-2xl lg:text-3xl' : 'text-base sm:text-lg'}`}>
-                      {img.title}
-                    </h3>
-                  </div>
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center text-white/80 group-hover:bg-[#d97706] group-hover:text-black group-hover:border-[#d97706] transition-all duration-300 flex-shrink-0">
+                {/* Floating Minimalist View Indicator on Hover */}
+                <div className="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none">
+                  <div className="w-9 h-9 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[#f5f0e6] flex items-center justify-center group-hover:bg-[#d97706] group-hover:text-black group-hover:border-[#d97706] transition-all duration-300 shadow-xl">
                     <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </div>
@@ -178,27 +130,17 @@ export default function FeastGallery() {
             onClick={(e) => e.stopPropagation()} 
             className="max-w-4xl w-full flex flex-col items-center"
           >
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#140f0c] shadow-2xl max-h-[75vh] flex items-center justify-center">
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#140f0c] shadow-2xl max-h-[78vh] flex items-center justify-center">
               <img
                 src={DRIVE_CDN(GALLERY_IMAGES[selectedIdx].id)}
-                alt={GALLERY_IMAGES[selectedIdx].title}
-                className="max-h-[72vh] w-auto max-w-full object-contain"
+                alt="Delli Bites Culinary Presentation"
+                className="max-h-[75vh] w-auto max-w-full object-contain"
               />
             </div>
             
-            {/* Caption & Counter Bar */}
-            <div className="mt-4 w-full flex items-center justify-between px-2 text-xs">
-              <div className="flex items-center gap-3">
-                <span className="px-2 py-0.5 rounded-full bg-[#d97706]/20 border border-[#d97706]/40 text-[#d97706] font-mono text-[10px] uppercase">
-                  {GALLERY_IMAGES[selectedIdx].category}
-                </span>
-                <span className="font-serif text-[#f5f0e6] text-sm sm:text-base">
-                  {GALLERY_IMAGES[selectedIdx].title}
-                </span>
-              </div>
-              <span className="font-mono text-[#9b9185]">
-                {String(selectedIdx + 1).padStart(2, '0')} / {String(GALLERY_IMAGES.length).padStart(2, '0')}
-              </span>
+            {/* Minimalist Slide Counter (No dish names) */}
+            <div className="mt-4 flex items-center justify-center text-xs text-[#9b9185] font-mono tracking-widest">
+              <span>{String(selectedIdx + 1).padStart(2, '0')} / {String(GALLERY_IMAGES.length).padStart(2, '0')}</span>
             </div>
           </div>
         </div>
