@@ -34,11 +34,11 @@ export default function Navbar() {
           
           {/* Brand Wordmark & Emblem */}
           <a href="#" className="flex items-center gap-3.5 group">
-            <div className="w-9 h-9 rounded-full overflow-hidden border border-white/15 bg-[#17120e] p-0.5 transition-transform duration-300 group-hover:scale-105">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 overflow-hidden border border-white/15 bg-[#17120e] p-0.5 transition-transform duration-300 group-hover:scale-105 shadow-sm">
               <img 
                 src="/assets/delli_logo.png" 
                 alt="Delli Bites" 
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full object-contain"
                 onError={(e) => {
                   e.target.style.display = 'none';
                 }}

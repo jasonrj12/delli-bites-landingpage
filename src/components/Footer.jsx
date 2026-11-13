@@ -21,11 +21,11 @@ export default function Footer() {
             
             {/* Brand Emblem & Wordmark */}
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full overflow-hidden border border-[#d97706]/40 bg-[#140f0c] p-1 shadow-lg">
+              <div className="w-12 h-12 overflow-hidden border border-[#d97706]/40 bg-[#140f0c] p-1 shadow-lg">
                 <img
                   src="/assets/delli_logo.png"
                   alt="Delli Bites Logo"
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div>
