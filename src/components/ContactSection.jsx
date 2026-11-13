@@ -32,9 +32,14 @@ export default function ContactSection() {
                 <span className="text-[11px] uppercase tracking-[0.2em] text-[#9b9185] block mb-1">
                   Address
                 </span>
-                <p className="font-serif text-xl sm:text-2xl text-[#f5f0e6]">
+                <a
+                  href={RESTAURANT_INFO.links.map}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-serif text-xl sm:text-2xl text-[#f5f0e6] hover:text-[#d97706] transition-colors block"
+                >
                   {RESTAURANT_INFO.shortAddress}
-                </p>
+                </a>
                 <p className="text-xs text-[#736a5f] mt-0.5">Uxbridge, Greater London</p>
               </div>
 
@@ -88,7 +93,7 @@ export default function ContactSection() {
                 Book a Table
               </a>
               <a
-                href="https://maps.google.com/?q=40+Windsor+Street+Uxbridge+UB8+1AB"
+                href={RESTAURANT_INFO.links.map}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs uppercase tracking-wider font-semibold text-[#f5f0e6] hover:text-[#d97706] flex items-center gap-1 transition-colors"
@@ -102,15 +107,24 @@ export default function ContactSection() {
 
           {/* Right Column: Google Maps Frame */}
           <div className="lg:col-span-7">
-            <div className="border border-white/10 aspect-[4/3] sm:aspect-[16/10] bg-[#1a1410] relative">
+            <div className="border border-white/10 aspect-[4/3] sm:aspect-[16/10] bg-[#1a1410] relative group overflow-hidden">
               <iframe
                 title="Delli Bites Uxbridge Map"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'contrast(1.05) saturate(0.9) brightness(0.9)' }}
                 loading="lazy"
-                src="https://maps.google.com/maps?q=40%20Windsor%20St,%20Uxbridge%20UB8%201AB,%20UK&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Delli%20Bites,%2040%20Windsor%20St,%20Uxbridge%20UB8%201AB&t=&z=16&ie=UTF8&iwloc=&output=embed"
               />
+              <a
+                href={RESTAURANT_INFO.links.map}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-3 right-3 px-3 py-1.5 rounded-md bg-[#0e0b09]/90 hover:bg-[#d97706] text-white hover:text-black text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md border border-white/10"
+              >
+                <span>View on Google Maps</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </a>
             </div>
           </div>
 

@@ -26,7 +26,7 @@ export default function ExperienceStory() {
             {/* Display Type Moment (taste-skill rule: address large) */}
             <div className="py-2 border-y border-white/10">
               <a 
-                href="https://maps.google.com/?q=40+Windsor+Street+Uxbridge+UB8+1AB"
+                href={RESTAURANT_INFO.links.map}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-serif text-2xl sm:text-3xl text-[#f5f0e6] hover:text-[#e59a35] transition-colors inline-block"

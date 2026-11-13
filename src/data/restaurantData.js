@@ -50,7 +50,8 @@ export const RESTAURANT_INFO = {
   },
   links: {
     orderOnline: "https://order.dellibites.co.uk/",
-    bookTable: "https://order.dellibites.co.uk/Uxbridge/booking-table/default"
+    bookTable: "https://order.dellibites.co.uk/Uxbridge/booking-table/default",
+    map: "https://maps.app.goo.gl/t26tHavtnpZ5pP85A"
   },
   apps: {
     ios: "https://apps.apple.com/gb/app/delli-bites/id6742140977",

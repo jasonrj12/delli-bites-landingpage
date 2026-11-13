@@ -57,7 +57,7 @@ export default function Footer() {
               <div className="space-y-2.5">
                 {/* Address */}
                 <a
-                  href="https://maps.google.com/?q=40+Windsor+Street+Uxbridge+UB8+1AB"
+                  href={RESTAURANT_INFO.links.map}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 hover:border-white/15 transition-all flex items-center gap-3.5"
