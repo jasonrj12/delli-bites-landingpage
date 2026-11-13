@@ -34,7 +34,7 @@ export default function Navbar() {
           
           {/* Brand Wordmark & Emblem */}
           <a href="#" className="flex items-center gap-3.5 group">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 overflow-hidden border border-white/15 bg-[#17120e] p-0.5 transition-transform duration-300 group-hover:scale-105 shadow-sm">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 overflow-hidden transition-transform duration-300 group-hover:scale-105">
               <img 
                 src="/assets/delli_logo.png" 
                 alt="Delli Bites" 
