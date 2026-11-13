@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
 import { RESTAURANT_INFO, DRIVE_CDN } from '../data/restaurantData';
 
 export default function AppPromo() {
@@ -68,7 +67,7 @@ export default function AppPromo() {
 
             </div>
 
-            {/* Minimal App Store & Google Play Badges */}
+            {/* Official App Store & Google Play Badges */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
               
               {/* Apple iOS */}
@@ -76,15 +75,14 @@ export default function AppPromo() {
                 href={RESTAURANT_INFO.apps.ios}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-full border border-white/20 hover:border-white/60 bg-black/50 text-[#f5f0e6] flex items-center gap-3 transition-all hover:scale-[1.02]"
+                className="transition-transform duration-200 hover:scale-105 active:scale-95 inline-block"
+                aria-label="Download on Apple App Store"
               >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.77 1.06-1.85.94-2.93-.93.04-2.02.63-2.66 1.4-.56.65-.99 1.73-.86 2.78 1.04.08 2.06-.57 2.58-1.25z"/>
-                </svg>
-                <div className="text-left">
-                  <div className="text-[9px] text-[#9b9185] uppercase tracking-wider leading-none">Download on</div>
-                  <div className="text-xs font-semibold leading-tight mt-0.5">App Store</div>
-                </div>
+                <img
+                  src="/assets/img/apple-store.logo.svg"
+                  alt="Download on Apple App Store"
+                  className="h-11 sm:h-12 w-auto object-contain rounded-lg border border-white/10 hover:border-white/30 transition-colors shadow-md"
+                />
               </a>
 
               {/* Google Play */}
@@ -92,18 +90,15 @@ export default function AppPromo() {
                 href={RESTAURANT_INFO.apps.android}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-full border border-white/20 hover:border-white/60 bg-black/50 text-[#f5f0e6] flex items-center gap-3 transition-all hover:scale-[1.02]"
+                className="transition-transform duration-200 hover:scale-105 active:scale-95 inline-block"
+                aria-label="Get it on Google Play"
               >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M3.609 1.814L13.792 12 3.61 22.186a1.98 1.98 0 0 1-.61-.913V2.727c.176-.367.394-.687.609-.913zm11.238 11.241l2.437 2.437-12.02 6.892 9.583-9.329zm0-2.11L5.264 1.616l12.02 6.892-2.437 2.437zm1.488 1.488l3.411-1.956c.869-.498.869-1.31 0-1.808l-3.411-1.956-1.849 1.849 1.849 1.871z"/>
-                </svg>
-                <div className="text-left">
-                  <div className="text-[9px] text-[#9b9185] uppercase tracking-wider leading-none">Get it on</div>
-                  <div className="text-xs font-semibold leading-tight mt-0.5">Google Play</div>
-                </div>
+                <img
+                  src="/assets/img/google-play.logo.svg"
+                  alt="Get it on Google Play"
+                  className="h-11 sm:h-12 w-auto object-contain rounded-lg border border-white/10 hover:border-white/30 transition-colors shadow-md"
+                />
               </a>
-
-
 
             </div>
 

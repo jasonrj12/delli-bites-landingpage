@@ -114,7 +114,7 @@ export default function Footer() {
         {/* Bottom line */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#736a5f] gap-4">
           <div>
-            © {new Date().getFullYear()} Delli Bites Restaurant. 40 Windsor Street, Uxbridge.
+            © {new Date().getFullYear()} Delli Bites
           </div>
           <div>
             Authentic Indian Gastronomy & Hospitality
