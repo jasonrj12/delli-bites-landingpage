@@ -1,6 +1,6 @@
 // Delli Bites restaurant content and media assets
 
-export const DRIVE_CDN = (id) => `https://lh3.googleusercontent.com/d/${id}`;
+export const DRIVE_CDN = (id) => `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
 
 export const RESTAURANT_INFO = {
   name: "Delli Bites",
