@@ -61,6 +61,29 @@ export default function ReservationModal({ isOpen, onClose }) {
         {step === 'form' ? (
           <form onSubmit={handleSubmit} className="p-6 space-y-4">
             
+            {/* Direct Booking Portal Banner */}
+            <a
+              href={RESTAURANT_INFO.links.bookTable}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3.5 rounded-2xl bg-gradient-to-r from-[#D97706]/20 via-[#B45309]/15 to-transparent border border-[#D97706]/40 flex items-center justify-between group hover:border-[#F59E0B] transition-all"
+            >
+              <div className="flex items-center gap-2.5">
+                <Sparkles className="w-4 h-4 text-[#F59E0B]" />
+                <div>
+                  <span className="text-xs font-bold text-white block">Official Table Booking Portal</span>
+                  <span className="text-[11px] text-[#D1C7BD]">Instant table reservation engine</span>
+                </div>
+              </div>
+              <span className="text-xs font-bold text-[#F59E0B] group-hover:underline">Open Portal →</span>
+            </a>
+
+            <div className="flex items-center my-2">
+              <div className="flex-1 border-t border-white/10" />
+              <span className="px-3 text-[10px] font-semibold uppercase tracking-wider text-[#A89F91]">or submit request here</span>
+              <div className="flex-1 border-t border-white/10" />
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Date */}
               <div>

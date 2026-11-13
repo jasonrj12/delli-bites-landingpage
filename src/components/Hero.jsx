@@ -60,22 +60,26 @@ export default function Hero({ onOpenReservation, onOpenOrder }) {
 
             {/* Primary Action Buttons */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              <button
-                onClick={onOpenOrder}
+              <a
+                href={RESTAURANT_INFO.links.orderOnline}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group px-7 py-4 rounded-full font-bold text-sm uppercase tracking-wider text-white bg-gradient-to-r from-[#d97706] to-[#b45309] hover:from-[#f59e0b] hover:to-[#d97706] shadow-xl shadow-[#d97706]/30 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2.5"
               >
                 <ShoppingBag className="w-4 h-4 text-white" />
                 <span>Order Online</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
+              </a>
 
-              <button
-                onClick={onOpenReservation}
+              <a
+                href={RESTAURANT_INFO.links.bookTable}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group px-7 py-4 rounded-full font-bold text-sm uppercase tracking-wider text-[#FAF6EE] bg-[#1a1410]/80 hover:bg-[#251b14] border border-[#D97706]/40 hover:border-[#D97706] transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2.5 backdrop-blur-sm"
               >
                 <Calendar className="w-4 h-4 text-[#D97706]" />
                 <span>Book a Table</span>
-              </button>
+              </a>
             </div>
 
             {/* Quick Proof Pills */}

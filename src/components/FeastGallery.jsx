@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Camera, Sparkles, Maximize2, X, ChevronLeft, ChevronRight, ShoppingBag } from 'lucide-react';
-import { GALLERY_IMAGES, DRIVE_CDN } from '../data/restaurantData';
+import { Camera, Sparkles, Maximize2, X, ChevronLeft, ChevronRight, ShoppingBag, ExternalLink } from 'lucide-react';
+import { GALLERY_IMAGES, DRIVE_CDN, RESTAURANT_INFO } from '../data/restaurantData';
 
 export default function FeastGallery({ onOpenOrder }) {
   const [selectedImageIdx, setSelectedImageIdx] = useState(null);
@@ -181,16 +181,16 @@ export default function FeastGallery({ onOpenOrder }) {
               </p>
               
               <div className="mt-3">
-                <button
-                  onClick={() => {
-                    closeLightbox();
-                    onOpenOrder();
-                  }}
-                  className="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#D97706] hover:bg-[#F59E0B] inline-flex items-center gap-2"
+                <a
+                  href={RESTAURANT_INFO.links.orderOnline}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#D97706] hover:bg-[#F59E0B] inline-flex items-center gap-2 transition-all hover:scale-105 shadow-md shadow-[#D97706]/30"
                 >
                   <ShoppingBag className="w-3.5 h-3.5" />
-                  Order This Dish Now
-                </button>
+                  <span>Order Online Now</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
               </div>
             </div>
           </div>

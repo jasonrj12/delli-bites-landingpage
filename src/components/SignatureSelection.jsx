@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Utensils, Wine, Heart, ChevronRight, CheckCircle2 } from 'lucide-react';
-import { DRIVE_CDN } from '../data/restaurantData';
+import { DRIVE_CDN, RESTAURANT_INFO } from '../data/restaurantData';
 
 export default function SignatureSelection({ onOpenOrder }) {
   const [activeDrinkIdx, setActiveDrinkIdx] = useState(0);
@@ -93,13 +93,15 @@ export default function SignatureSelection({ onOpenOrder }) {
               </div>
 
               <div className="pt-2">
-                <button
-                  onClick={onOpenOrder}
-                  className="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#D97706] hover:bg-[#F59E0B] transition-colors shadow-md shadow-[#D97706]/20 flex items-center gap-2"
+                <a
+                  href={RESTAURANT_INFO.links.orderOnline}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#D97706] hover:bg-[#F59E0B] transition-colors shadow-md shadow-[#D97706]/20 items-center gap-2"
                 >
                   <span>Order These Dishes</span>
                   <ChevronRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
 
             </div>
@@ -142,13 +144,15 @@ export default function SignatureSelection({ onOpenOrder }) {
               </div>
 
               <div className="pt-2">
-                <button
-                  onClick={onOpenOrder}
-                  className="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-[#FAF6EE] border border-[#D97706]/50 hover:bg-[#D97706]/15 transition-all flex items-center gap-2"
+                <a
+                  href={RESTAURANT_INFO.links.orderOnline}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-[#FAF6EE] border border-[#D97706]/50 hover:bg-[#D97706]/15 transition-all items-center gap-2"
                 >
                   <span>Explore Comfort Menu</span>
                   <ChevronRight className="w-4 h-4 text-[#D97706]" />
-                </button>
+                </a>
               </div>
 
             </div>
@@ -251,10 +255,12 @@ export default function SignatureSelection({ onOpenOrder }) {
 
               <div className="pt-2">
                 <a
-                  href="#contact"
+                  href={RESTAURANT_INFO.links.bookTable}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#d97706] to-[#b45309] hover:from-[#f59e0b] hover:to-[#d97706] transition-all shadow-md shadow-[#D97706]/20"
                 >
-                  <span>Dine With Us & Sip</span>
+                  <span>Book a Table & Sip</span>
                   <ChevronRight className="w-4 h-4" />
                 </a>
               </div>

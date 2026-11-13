@@ -124,12 +124,14 @@ export default function ExperienceStory({ onOpenReservation }) {
             </div>
 
             <div className="pt-4">
-              <button
-                onClick={onOpenReservation}
-                className="px-7 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-[#d97706] to-[#b45309] hover:from-[#f59e0b] hover:to-[#d97706] shadow-lg shadow-[#d97706]/25 transition-all hover:scale-105 active:scale-95"
+              <a
+                href={RESTAURANT_INFO.links.bookTable}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-7 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-[#d97706] to-[#b45309] hover:from-[#f59e0b] hover:to-[#d97706] shadow-lg shadow-[#d97706]/25 transition-all hover:scale-105 active:scale-95"
               >
                 Reserve Your Table Today
-              </button>
+              </a>
             </div>
 
           </div>

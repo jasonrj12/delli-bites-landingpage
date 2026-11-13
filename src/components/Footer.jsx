@@ -162,20 +162,24 @@ export default function Footer({ onOpenReservation, onOpenOrder }) {
             </div>
 
             <div className="pt-2 flex gap-3">
-              <button
-                onClick={onOpenOrder}
+              <a
+                href={RESTAURANT_INFO.links.orderOnline}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#D97706] hover:bg-[#F59E0B] transition-colors flex items-center gap-1.5"
               >
                 <ShoppingBag className="w-3.5 h-3.5" />
-                Order
-              </button>
-              <button
-                onClick={onOpenReservation}
+                <span>Order Online</span>
+              </a>
+              <a
+                href={RESTAURANT_INFO.links.bookTable}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white border border-[#D97706]/50 hover:bg-[#D97706]/15 transition-colors flex items-center gap-1.5"
               >
                 <Calendar className="w-3.5 h-3.5 text-[#D97706]" />
-                Book Table
-              </button>
+                <span>Book Table</span>
+              </a>
             </div>
           </div>
 

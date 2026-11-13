@@ -21,10 +21,14 @@ export const RESTAURANT_INFO = {
     tripadvisor: "https://www.tripadvisor.ie/Restaurant_Review-g1646049-d29011179-Reviews-Delli_Bites-Uxbridge_Greater_London_England.html",
     thefork: "https://www.thefork.com/restaurant/delli-bites-r836415"
   },
+  links: {
+    orderOnline: "https://order.dellibites.co.uk/",
+    bookTable: "https://order.dellibites.co.uk/Uxbridge/booking-table/default"
+  },
   apps: {
     ios: "https://apps.apple.com/gb/app/delli-bites/id6742140977",
     android: "https://play.google.com/store/apps/details?id=com.mitakeaway.dellibites&pli=1",
-    directOrder: "https://dellibites.co.uk"
+    directOrder: "https://order.dellibites.co.uk/"
   }
 };
 

@@ -81,31 +81,37 @@ export default function Navbar({ onOpenReservation, onOpenOrder }) {
               <span>{RESTAURANT_INFO.displayPhone}</span>
             </a>
 
-            <button
-              onClick={onOpenOrder}
+            <a
+              href={RESTAURANT_INFO.links.orderOnline}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#d97706] to-[#b45309] hover:from-[#f59e0b] hover:to-[#d97706] shadow-lg shadow-[#d97706]/25 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-1.5"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
               <span>Order Online</span>
-            </button>
+            </a>
 
-            <button
-              onClick={onOpenReservation}
+            <a
+              href={RESTAURANT_INFO.links.bookTable}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#FAF6EE] border border-[#D97706]/60 hover:bg-[#D97706]/15 hover:border-[#D97706] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-1.5"
             >
               <Calendar className="w-3.5 h-3.5 text-[#D97706]" />
               <span>Book a Table</span>
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex sm:hidden items-center gap-2">
-            <button
-              onClick={onOpenOrder}
+            <a
+              href={RESTAURANT_INFO.links.orderOnline}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide text-white bg-[#D97706]"
             >
               Order
-            </button>
+            </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-[#FAF6EE] hover:text-[#D97706] transition-colors"
@@ -133,26 +139,26 @@ export default function Navbar({ onOpenReservation, onOpenOrder }) {
               </a>
             ))}
             <div className="pt-4 flex flex-col gap-3">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenOrder();
-                }}
+              <a
+                href={RESTAURANT_INFO.links.orderOnline}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-3 rounded-xl font-bold uppercase text-xs tracking-wider text-white bg-gradient-to-r from-[#d97706] to-[#b45309] flex items-center justify-center gap-2 shadow-lg shadow-[#d97706]/30"
               >
                 <ShoppingBag className="w-4 h-4" />
                 Order Online
-              </button>
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenReservation();
-                }}
+              </a>
+              <a
+                href={RESTAURANT_INFO.links.bookTable}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-3 rounded-xl font-bold uppercase text-xs tracking-wider text-[#FAF6EE] border border-[#d97706]/50 hover:bg-[#d97706]/15 flex items-center justify-center gap-2"
               >
                 <Calendar className="w-4 h-4 text-[#D97706]" />
                 Book a Table
-              </button>
+              </a>
               <a
                 href={`tel:${RESTAURANT_INFO.phone}`}
                 className="text-center text-sm font-semibold text-[#D97706] pt-2 flex items-center justify-center gap-2"
