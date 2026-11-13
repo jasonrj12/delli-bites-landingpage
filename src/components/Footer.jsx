@@ -43,28 +43,6 @@ export default function Footer() {
               The vibrant flavours of Indian cuisine await you at 40 Windsor St, Uxbridge UB8 1AB, United Kingdom. Our cosy restaurant is designed to blend tradition with modern comfort, offering inviting seating and a friendly atmosphere perfect for you and your loved ones.
             </p>
 
-            {/* Quick Actions */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <a
-                href={RESTAURANT_INFO.links.orderOnline}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-black bg-[#d97706] hover:bg-[#e59a35] transition-all hover:scale-105 active:scale-95 shadow-md flex items-center gap-1.5"
-              >
-                <span>Order Online</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-
-              <a
-                href={RESTAURANT_INFO.links.bookTable}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#f5f0e6] border border-white/20 hover:border-white/50 hover:bg-white/5 transition-all hover:scale-105 active:scale-95"
-              >
-                Book a Table
-              </a>
-            </div>
-
           </div>
 
           {/* Right Column: Interactive Contact Cards & Social Hub (No Opening Hours) */}
@@ -183,15 +161,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Legal Line */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#736a5f] gap-4">
-          <div>
-            © {currentYear} Delli Bites
-          </div>
-          <div className="flex items-center gap-3">
-            <span>40 Windsor Street, Uxbridge UB8 1AB</span>
-            <span className="text-white/20">•</span>
-            <span>Authentic Indian Gastronomy</span>
-          </div>
+        <div className="pt-8 text-center sm:text-left text-xs text-[#736a5f]">
+          © {currentYear} Delli Bites
         </div>
 
       </div>
