@@ -15,6 +15,7 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { name: 'Home', href: '#' },
     { name: 'Menu', href: '#signatures' },
     { name: 'Reviews', href: '#reviews' },
     { name: 'Visit Us', href: '#contact' },
@@ -68,15 +69,6 @@ export default function Navbar() {
 
           {/* Action Links */}
           <div className="hidden sm:flex items-center gap-4">
-            <a
-              href={RESTAURANT_INFO.links.bookTable}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-[#f5f0e6] border border-white/20 hover:border-white/50 hover:bg-white/5 transition-all"
-            >
-              Book a Table
-            </a>
-
             <a
               href={RESTAURANT_INFO.links.orderOnline}
               target="_blank"
@@ -133,15 +125,6 @@ export default function Navbar() {
                 className="w-full py-3 rounded-full font-bold uppercase text-xs tracking-wider text-black bg-[#d97706] text-center"
               >
                 Order Online
-              </a>
-              <a
-                href={RESTAURANT_INFO.links.bookTable}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3 rounded-full font-semibold uppercase text-xs tracking-wider text-[#f5f0e6] border border-white/20 text-center"
-              >
-                Book a Table
               </a>
             </div>
           </div>
