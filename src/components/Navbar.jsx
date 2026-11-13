@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu as MenuIcon, X, Phone, ArrowUpRight } from 'lucide-react';
+import { Menu as MenuIcon, X, ArrowUpRight } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 
 export default function Navbar() {
@@ -15,13 +15,9 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Our Story', href: '#story' },
-    { name: 'Signatures', href: '#signatures' },
-    { name: 'Drinks', href: '#drinks' },
-    { name: 'Feast Gallery', href: '#gallery' },
-    { name: 'App & Offers', href: '#app' },
+    { name: 'Menu', href: '#signatures' },
     { name: 'Reviews', href: '#reviews' },
-    { name: 'Location', href: '#contact' },
+    { name: 'Visit Us', href: '#contact' },
   ];
 
   return (
@@ -72,14 +68,6 @@ export default function Navbar() {
 
           {/* Action Links */}
           <div className="hidden sm:flex items-center gap-4">
-            <a 
-              href={`tel:${RESTAURANT_INFO.phone}`}
-              className="text-xs tracking-wider text-[#9b9185] hover:text-[#f5f0e6] transition-colors flex items-center gap-1.5"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#d97706]" />
-              <span>{RESTAURANT_INFO.displayPhone}</span>
-            </a>
-
             <a
               href={RESTAURANT_INFO.links.bookTable}
               target="_blank"
