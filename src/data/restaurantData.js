@@ -1,6 +1,33 @@
 // Delli Bites restaurant content and media assets
 
-export const DRIVE_CDN = (id) => `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+// Map of Drive IDs to locally-downloaded image filenames
+const LOCAL_IMGS = {
+  '1moa38UCn089KXG5Hzbp7Lu8E7IWf2Qtp': 'hero1',
+  '137Ra3tmW2qfFSQRF8ecMAsat-mwDkArB': 'hero2',
+  '1gdp5HBEufUTAJNLIUWSefuQhtkt6ocqV': 'hero3',
+  '1duRey8TeZv0uaZaG4cml89kEdPOlX13l': 'story_interior',
+  '1BtyE2erOOW_t3_owbD-azdwwgZ6em9zi': 'culinary',
+  '1oTaONwC5pejGq1kJpLf5Nbj-0iQxOzrH': 'comfort',
+  '1op0EH9CmUa4jCoFk4f-6u_0GvvAs_7Ct': 'drinks2',
+  '1BMW_Aukz5wH0Dk22fv6RcUcxQZJd31CR': 'gallery1',
+  '1KJFJ-CcFCTG5L8xcORYd44u8zwtylQdU': 'gallery2',
+  '1l1-mpbTlLJtMbzIcbuSuuuTP0xI1cF0_': 'gallery3',
+  '1M_UH6FomSbpinbMVThAW8HwUMATvApjU': 'gallery4',
+  '1SmBOhZuUIoKH8SLsb04kXLW9yIopeXKD': 'gallery5',
+  '1E7lWu_BNOUBDJD5Tuwp8bpUb2u0NKgtm': 'gallery6',
+  '1x9zftvlU0JoSxQvigcJPJHJiT5asQSwa': 'gallery7',
+  '1Ah4TGFnrTkEchULkKHb-TU3Rxvu5OX58': 'app_promo',
+  '1ppJnCc4NpLR44CJ99uRNBJ_0nGGIH3JW': 'fsa',
+  '18Fv-OnqTF1hpwZAGxkOm4mDbYdvLFYsZ': 'guru1',
+  '1p8PhO5UOF-UF81CeSQ5DsFwKTyb8Xw4J': 'guru2',
+};
+
+// Use local assets — falls back to Drive thumbnail if not mapped
+export const DRIVE_CDN = (id) => {
+  const local = LOCAL_IMGS[id];
+  if (local) return `/assets/img/${local}.jpg`;
+  return `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+};
 
 export const RESTAURANT_INFO = {
   name: "Delli Bites",
