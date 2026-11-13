@@ -107,7 +107,7 @@ export default function ContactSection() {
 
           {/* Right Column: Google Maps Frame */}
           <div className="lg:col-span-7">
-            <div className="border border-white/10 aspect-[4/3] sm:aspect-[16/10] bg-[#1a1410] relative group overflow-hidden">
+            <div className="border border-white/10 aspect-[4/3] sm:aspect-[16/10] bg-[#1a1410] relative overflow-hidden">
               <iframe
                 title="Delli Bites Uxbridge Map"
                 width="100%"
@@ -116,15 +116,6 @@ export default function ContactSection() {
                 loading="lazy"
                 src="https://maps.google.com/maps?q=Delli%20Bites,%2040%20Windsor%20St,%20Uxbridge%20UB8%201AB&t=&z=16&ie=UTF8&iwloc=&output=embed"
               />
-              <a
-                href={RESTAURANT_INFO.links.map}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-3 right-3 px-3 py-1.5 rounded-md bg-[#0e0b09]/90 hover:bg-[#d97706] text-white hover:text-black text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md border border-white/10"
-              >
-                <span>View on Google Maps</span>
-                <ArrowUpRight className="w-3 h-3" />
-              </a>
             </div>
           </div>
 
