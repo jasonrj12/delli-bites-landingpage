@@ -75,7 +75,9 @@ export default function ContactSection() {
                   {RESTAURANT_INFO.hours.map((h, i) => (
                     <div key={i} className="flex justify-between items-center text-[#c9c0b3] border-b border-white/5 pb-1">
                       <span>{h.days}</span>
-                      <span className="text-[#f5f0e6] font-mono text-xs">{h.time}</span>
+                      <span className={`font-mono text-xs ${h.time === 'Closed' ? 'text-amber-500/90 font-medium' : 'text-[#f5f0e6]'}`}>
+                        {h.time}
+                      </span>
                     </div>
                   ))}
                 </div>

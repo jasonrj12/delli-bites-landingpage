@@ -38,9 +38,10 @@ export const RESTAURANT_INFO = {
   displayPhone: "01895 810893",
   email: "info@dellibites.co.uk",
   hours: [
-    { days: "Monday - Thursday", time: "12:00 PM – 10:30 PM" },
-    { days: "Friday - Saturday", time: "12:00 PM – 11:00 PM" },
-    { days: "Sunday", time: "12:00 PM – 10:00 PM" }
+    { days: "Monday", time: "Closed" },
+    { days: "Tuesday - Thursday", time: "12:00 PM – 10:00 PM" },
+    { days: "Friday - Saturday", time: "12:00 PM – 10:30 PM" },
+    { days: "Sunday", time: "12:00 PM – 9:30 PM" }
   ],
   socials: {
     instagram: "https://www.instagram.com/delli.bites/",
