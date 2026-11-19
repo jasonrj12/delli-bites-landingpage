@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import TrustBadges from './components/TrustBadges';
 import ExperienceStory from './components/ExperienceStory';
+import ChefSection from './components/ChefSection';
 import SignatureSelection from './components/SignatureSelection';
 import FeastGallery from './components/FeastGallery';
 import AppPromo from './components/AppPromo';
@@ -35,6 +36,9 @@ export default function App() {
 
         {/* Our Signature Selection: 3 Culinary Chapters */}
         <SignatureSelection />
+
+        {/* Meet the Talented Chef: Culinary Masters Behind Our Cuisine */}
+        <ChefSection />
 
         {/* The Feast: 7 High-resolution Dishes */}
         <FeastGallery />

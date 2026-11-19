@@ -2,6 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
 import { GALLERY_IMAGES, DRIVE_CDN } from '../data/restaurantData';
 
+function WordReveal({ text, className = '', delayStart = 60, tag = '' }) {
+  const words = text ? text.split(' ') : [];
+  return (
+    <div className="inline-flex flex-col">
+      {tag && (
+        <span className="overflow-hidden inline-block mb-1">
+          <span className="inline-block transform -translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] delay-[30ms] text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#e59a35] font-semibold">
+            {tag}
+          </span>
+        </span>
+      )}
+      <span className={`inline-flex flex-wrap gap-x-1.5 ${className}`}>
+        {words.map((word, i) => (
+          <span key={i} className="inline-block overflow-hidden py-0.5">
+            <span
+              className="inline-block transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              style={{
+                transitionDelay: `${delayStart + i * 50}ms`
+              }}
+            >
+              {word}
+            </span>
+          </span>
+        ))}
+      </span>
+    </div>
+  );
+}
+
 const BENTO_SPANS = [
   // Item 0: Large Anchor Hero
   "col-span-1 sm:col-span-2 lg:col-span-2 lg:row-span-2 h-[280px] sm:h-[320px] lg:h-full lg:min-h-[584px]",
@@ -52,7 +81,7 @@ export default function FeastGallery() {
           </p>
         </div>
 
-        {/* Pure Photographic Bento Grid (No dish names) */}
+        {/* Pure Photographic Bento Grid with Word Reveal */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-5 lg:gap-6 auto-rows-auto lg:auto-rows-[280px]">
           {GALLERY_IMAGES.map((img, idx) => {
             const spanClass = BENTO_SPANS[idx] || BENTO_SPANS[0];
@@ -65,18 +94,27 @@ export default function FeastGallery() {
                 {/* Background Plate Image */}
                 <img
                   src={DRIVE_CDN(img.id)}
-                  alt="Delli Bites Culinary Presentation"
+                  alt={img.commonName || "Delli Bites Culinary Presentation"}
                   className="w-full h-full object-cover filter contrast-[1.05] brightness-[0.92] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out"
                   loading="lazy"
                 />
 
                 {/* Subtle Ambient Hover Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                {/* Floating Minimalist View Indicator on Hover */}
-                <div className="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none">
-                  <div className="w-9 h-9 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[#f5f0e6] flex items-center justify-center group-hover:bg-[#d97706] group-hover:text-black group-hover:border-[#d97706] transition-all duration-300 shadow-xl">
-                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                {/* Common Name & View Indicator on Cursor Hover with Word Reveal */}
+                <div className="absolute bottom-4 left-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end justify-between gap-3">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-black/85 backdrop-blur-md border border-[#d97706]/40 shadow-xl max-w-[85%]">
+                    <WordReveal
+                      tag={img.category}
+                      text={img.commonName}
+                      className="font-serif text-sm sm:text-base lg:text-lg text-[#f5f0e6] block leading-tight font-normal"
+                      delayStart={70}
+                    />
+                  </div>
+
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[#f5f0e6] flex items-center justify-center group-hover:bg-[#d97706] group-hover:text-black group-hover:border-[#d97706] transition-all duration-300 shadow-xl shrink-0 transform translate-y-2 group-hover:translate-y-0">
+                    <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </div>
               </div>
@@ -133,14 +171,26 @@ export default function FeastGallery() {
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#140f0c] shadow-2xl max-h-[78vh] flex items-center justify-center">
               <img
                 src={DRIVE_CDN(GALLERY_IMAGES[selectedIdx].id)}
-                alt="Delli Bites Culinary Presentation"
+                alt={GALLERY_IMAGES[selectedIdx].commonName || "Delli Bites Culinary Presentation"}
                 className="max-h-[75vh] w-auto max-w-full object-contain"
               />
             </div>
             
-            {/* Minimalist Slide Counter (No dish names) */}
-            <div className="mt-4 flex items-center justify-center text-xs text-[#9b9185] font-mono tracking-widest">
-              <span>{String(selectedIdx + 1).padStart(2, '0')} / {String(GALLERY_IMAGES.length).padStart(2, '0')}</span>
+            {/* Common Name & Counter Bar */}
+            <div className="mt-4 w-full flex items-center justify-between px-2 text-xs">
+              <div className="flex items-center gap-3">
+                {GALLERY_IMAGES[selectedIdx].category && (
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#d97706]/20 border border-[#d97706]/40 text-[#d97706] text-[10px] uppercase tracking-wider font-semibold">
+                    {GALLERY_IMAGES[selectedIdx].category}
+                  </span>
+                )}
+                <span className="font-serif text-[#f5f0e6] text-sm sm:text-base font-normal">
+                  {GALLERY_IMAGES[selectedIdx].commonName}
+                </span>
+              </div>
+              <span className="font-mono text-[#9b9185]">
+                {String(selectedIdx + 1).padStart(2, '0')} / {String(GALLERY_IMAGES.length).padStart(2, '0')}
+              </span>
             </div>
           </div>
         </div>

@@ -20,6 +20,8 @@ const LOCAL_IMGS = {
   '1ppJnCc4NpLR44CJ99uRNBJ_0nGGIH3JW': 'fsa',
   '18Fv-OnqTF1hpwZAGxkOm4mDbYdvLFYsZ': 'guru1',
   '1p8PhO5UOF-UF81CeSQ5DsFwKTyb8Xw4J': 'guru2',
+  '1jXl3GrMLDhhzGQpVrn9drngYCw8638UB': 'chef1',
+  '1Q4hSsI4PvBRcKGV_0HfKsLcj5aukpav8': 'chef2',
 };
 
 // Use local assets — falls back to Drive thumbnail if not mapped
@@ -58,6 +60,31 @@ export const RESTAURANT_INFO = {
     ios: "https://apps.apple.com/gb/app/delli-bites/id6742140977",
     android: "https://play.google.com/store/apps/details?id=com.mitakeaway.dellibites&pli=1",
     directOrder: "https://order.dellibites.co.uk/"
+  }
+};
+
+export const CHEF_INFO = {
+  eyebrow: "MEET THE TALENTED CHEF",
+  sectionTitle: "Culinary Masters Behind Our Cuisine",
+  name: "Chef Deepak Singh Dhami",
+  role: "Executive Head Chef",
+  experienceYears: "25+ Years",
+  experienceHighlight: "5-Star Luxury Hospitality",
+  hotels: [
+    { name: "Hyatt", title: "Hyatt Hotels" },
+    { name: "Grand Hyatt", title: "Grand Hyatt" },
+    { name: "Intercontinental", title: "InterContinental" },
+    { name: "Kempinski Group", title: "Kempinski Hotels" },
+    { name: "The Leela Palace", title: "The Leela Palace" },
+  ],
+  bio: [
+    "With over 25 years of experience in hospitality, Chef Deepak Singh Dhami is the talented chef bringing exceptional flavors to Delli Bites. His journey includes working at top 5-star hotels like Hyatt, Grand Hyatt, Intercontinental, Kempinski Group, and Leela Palace, where he played a key role in their success.",
+    "At Delli Bites, Chef Deepak turns dining into something special. Each dish is thoughtfully prepared with his expertise and love for great food, making every bite a delightful experience.",
+    "Delli Bites isn’t just a restaurant—it’s a place where you can explore and enjoy the best in fine dining. Join us to experience the amazing flavors crafted by Chef Deepak Singh Dhami, where his passion for food shines in every dish."
+  ],
+  images: {
+    portrait: "1jXl3GrMLDhhzGQpVrn9drngYCw8638UB",
+    kitchen: "1Q4hSsI4PvBRcKGV_0HfKsLcj5aukpav8"
   }
 };
 
@@ -130,13 +157,41 @@ export const SIGNATURE_SECTIONS = [
 ];
 
 export const GALLERY_IMAGES = [
-  { id: "1BMW_Aukz5wH0Dk22fv6RcUcxQZJd31CR" },
-  { id: "1KJFJ-CcFCTG5L8xcORYd44u8zwtylQdU" },
-  { id: "1l1-mpbTlLJtMbzIcbuSuuuTP0xI1cF0_" },
-  { id: "1M_UH6FomSbpinbMVThAW8HwUMATvApjU" },
-  { id: "1SmBOhZuUIoKH8SLsb04kXLW9yIopeXKD" },
-  { id: "1E7lWu_BNOUBDJD5Tuwp8bpUb2u0NKgtm" },
-  { id: "1x9zftvlU0JoSxQvigcJPJHJiT5asQSwa" }
+  {
+    id: "1BMW_Aukz5wH0Dk22fv6RcUcxQZJd31CR",
+    commonName: "Chargrilled Tandoori Platter",
+    category: "Tandoor Specialty"
+  },
+  {
+    id: "1KJFJ-CcFCTG5L8xcORYd44u8zwtylQdU",
+    commonName: "Slow-Braised Rich Rogan Josh",
+    category: "Slow-Cooked Curry"
+  },
+  {
+    id: "1l1-mpbTlLJtMbzIcbuSuuuTP0xI1cF0_",
+    commonName: "Delhi Street Samosa Chaat & Crisps",
+    category: "Street Delicacy"
+  },
+  {
+    id: "1M_UH6FomSbpinbMVThAW8HwUMATvApjU",
+    commonName: "Aromatic Fragrant Dum Biryani",
+    category: "Royal Dum Style"
+  },
+  {
+    id: "1SmBOhZuUIoKH8SLsb04kXLW9yIopeXKD",
+    commonName: "Freshly Baked Garlic & Butter Naan",
+    category: "Clay Oven Tandoori"
+  },
+  {
+    id: "1E7lWu_BNOUBDJD5Tuwp8bpUb2u0NKgtm",
+    commonName: "Royal North-Indian Curry Spread",
+    category: "House Speciality"
+  },
+  {
+    id: "1x9zftvlU0JoSxQvigcJPJHJiT5asQSwa",
+    commonName: "Artisanal Spice-Infused Cocktail",
+    category: "Craft Mixology"
+  }
 ];
 
 export const APP_PROMO = {
