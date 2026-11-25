@@ -206,13 +206,13 @@ export default function SignatureSelection() {
 
         </div>
 
-        {/* ===== TAKEAWAY MENU CTA BUTTON ===== */}
+        {/* ===== EVENT MENU CTA BUTTON ===== */}
         <div className="mt-16 sm:mt-20 pt-10 border-t border-white/5 flex justify-center">
           <button
             onClick={() => setMenuOpen(true)}
             className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#d97706]/50 text-[#e59a35] hover:border-[#d97706] hover:text-[#f5c066] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-sm font-medium tracking-wide"
           >
-            View Takeaway Menu
+            View Event Menu
             <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
         </div>
