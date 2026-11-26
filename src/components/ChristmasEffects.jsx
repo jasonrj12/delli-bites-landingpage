@@ -55,62 +55,76 @@ function SnowCanvas() {
 }
 
 // ─── 2. Fairy Lights String ───────────────────────────────────────────────────
-// A wire with ~18 coloured bulbs draped just below the top of the viewport.
-// Each bulb has a randomised twinkle delay so they flicker independently.
+// A multi-swag wire with coloured bulbs tucked along the top edge of the viewport,
+// sitting cleanly above the navbar links and logo without overlapping them.
 const BULB_COLORS = ['#e63946', '#f4d03f', '#2ecc71', '#3498db', '#e59a35', '#c0392b', '#27ae60'];
+const SWAG_COUNT = 5;
+const BULB_COUNT = 26;
+
+const WIRE_POINTS = Array.from({ length: 101 }, (_, i) => {
+  const t = i / 100;
+  const x = t * 1000;
+  const y = 1 + Math.abs(Math.sin(t * Math.PI * SWAG_COUNT)) * 3.8;
+  return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(2)}`;
+}).join(' ');
+
+const FAIRY_BULBS = Array.from({ length: BULB_COUNT }, (_, i) => {
+  // Keep bulbs inset slightly from viewport edges (2% to 98%)
+  const t = 0.02 + (i / (BULB_COUNT - 1)) * 0.96;
+  const sag = 1 + Math.abs(Math.sin(t * Math.PI * SWAG_COUNT)) * 3.8;
+  return {
+    xPct: t * 100,
+    xSvg: t * 1000,
+    sag,
+    color: BULB_COLORS[i % BULB_COLORS.length],
+    delay: ((i * 0.37) % 3).toFixed(2),
+    duration: (1.8 + ((i * 0.43) % 2.2)).toFixed(2),
+  };
+});
 
 function FairyLights() {
-  const COUNT = 22;
-  const bulbs = Array.from({ length: COUNT }, (_, i) => ({
-    x: (i / (COUNT - 1)) * 100,   // % across the width
-    // gentle catenary sag: deepest in the middle
-    sag: 2 + Math.sin((i / (COUNT - 1)) * Math.PI) * 2.8,
-    color: BULB_COLORS[i % BULB_COLORS.length],
-    delay: (Math.random() * 3).toFixed(2),
-    duration: (1.8 + Math.random() * 2.5).toFixed(2),
-  }));
-
   return (
     <div
       aria-hidden="true"
-      className="fixed top-0 left-0 right-0 z-[55] pointer-events-none"
-      style={{ height: '52px' }}
+      className="fixed top-0 left-0 right-0 z-[55] pointer-events-none h-[16px]"
     >
       <svg
-        viewBox="0 0 100 10"
+        viewBox="0 0 1000 16"
         preserveAspectRatio="none"
         className="absolute inset-0 w-full h-full"
       >
-        {/* Wire */}
+        {/* Multi-arch festoon wire */}
         <path
-          d={`M0,1 ${bulbs.map(b => `L${b.x},${b.sag}`).join(' ')} L100,1`}
+          d={WIRE_POINTS}
           fill="none"
-          stroke="#2a1f14"
-          strokeWidth="0.25"
+          stroke="#2d2218"
+          strokeWidth="1.2"
           strokeLinecap="round"
         />
-        {/* Bulb stems */}
-        {bulbs.map((b, i) => (
+        {/* Bulb sockets / stems */}
+        {FAIRY_BULBS.map((b, i) => (
           <line
             key={i}
-            x1={b.x} y1={b.sag}
-            x2={b.x} y2={b.sag + 1.4}
-            stroke="#2a1f14"
-            strokeWidth="0.18"
+            x1={b.xSvg}
+            y1={b.sag}
+            x2={b.xSvg}
+            y2={b.sag + 1.8}
+            stroke="#3a2c1e"
+            strokeWidth="1.4"
           />
         ))}
       </svg>
 
-      {/* Bulbs as DOM elements (positioned absolutely) for glow CSS animation */}
-      {bulbs.map((b, i) => (
+      {/* Twinkling bulbs attached directly to stems */}
+      {FAIRY_BULBS.map((b, i) => (
         <span
           key={i}
           className="fairy-bulb"
           style={{
-            left: `${b.x}%`,
-            top: `${(b.sag / 10) * 52 + 6}px`,
+            left: `${b.xPct}%`,
+            top: `${b.sag + 1.5}px`,
             background: b.color,
-            boxShadow: `0 0 6px 2px ${b.color}99, 0 0 12px 4px ${b.color}44`,
+            boxShadow: `0 0 5px 1.5px ${b.color}99, 0 0 10px 3px ${b.color}44`,
             animationDelay: `${b.delay}s`,
             animationDuration: `${b.duration}s`,
           }}

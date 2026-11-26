@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { isChristmasSeason, getBrandLogo } from '../lib/christmasUtils';
 
 export default function PageLoader() {
   const [visible, setVisible] = useState(true);
@@ -23,11 +24,19 @@ export default function PageLoader() {
       }`}
     >
       {/* Brand Emblem (Square, clean, no border) */}
-      <div className="w-14 h-14 sm:w-16 sm:h-16 overflow-hidden mb-5">
+      <div
+        className={`mb-5 ${
+          isChristmasSeason()
+            ? 'w-20 h-20 sm:w-24 sm:h-24'
+            : 'w-14 h-14 sm:w-16 sm:h-16 overflow-hidden'
+        }`}
+      >
         <img 
-          src="/assets/delli_logo.png" 
+          src={getBrandLogo()} 
           alt="Delli Bites Logo" 
-          className="w-full h-full object-contain"
+          className={`w-full h-full object-contain ${
+            isChristmasSeason() ? 'scale-[1.24] mix-blend-lighten' : ''
+          }`}
         />
       </div>
 

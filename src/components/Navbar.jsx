@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu as MenuIcon, X, ArrowUpRight } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
-import { isChristmasSeason } from '../lib/christmasUtils';
+import { isChristmasSeason, getBrandLogo } from '../lib/christmasUtils';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,25 +35,23 @@ export default function Navbar() {
           
           {/* Brand Wordmark & Emblem */}
           <a href="#" className="flex items-center gap-3.5 group">
-            <div className="relative w-10 h-10 sm:w-11 sm:h-11 transition-transform duration-300 group-hover:scale-105">
+            <div
+              className={`relative transition-transform duration-300 group-hover:scale-105 ${
+                isChristmasSeason()
+                  ? 'w-12 h-12 sm:w-14 sm:h-14'
+                  : 'w-10 h-10 sm:w-11 sm:h-11 overflow-hidden'
+              }`}
+            >
               <img 
-                src="/assets/delli_logo.png" 
+                src={getBrandLogo()} 
                 alt="Delli Bites" 
-                className="w-full h-full object-contain"
+                className={`w-full h-full object-contain ${
+                  isChristmasSeason() ? 'scale-[1.24] mix-blend-lighten' : ''
+                }`}
                 onError={(e) => {
                   e.target.style.display = 'none';
                 }}
               />
-              {/* Santa hat — festive season only (auto-hides after Jan 2 2027) */}
-              {isChristmasSeason() && (
-                <img
-                  src="/assets/img/santacap.png"
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute -top-3 -right-3 w-9 h-9 pointer-events-none select-none object-contain"
-                  style={{ transform: 'rotate(25deg)' }}
-                />
-              )}
             </div>
             <div className="flex flex-col">
               <span className="font-serif text-xl sm:text-2xl tracking-[0.08em] font-medium text-[#f5f0e6] group-hover:text-white transition-colors">

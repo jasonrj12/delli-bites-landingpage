@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight, MapPin, Phone, Mail } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
+import { isChristmasSeason, getBrandLogo } from '../lib/christmasUtils';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,11 +22,17 @@ export default function Footer() {
             
             {/* Brand Emblem & Wordmark */}
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 overflow-hidden">
+              <div
+                className={`${
+                  isChristmasSeason() ? 'w-16 h-16' : 'w-12 h-12 overflow-hidden'
+                }`}
+              >
                 <img
-                  src="/assets/delli_logo.png"
+                  src={getBrandLogo()}
                   alt="Delli Bites Logo"
-                  className="w-full h-full object-contain"
+                  className={`w-full h-full object-contain ${
+                    isChristmasSeason() ? 'scale-[1.24] mix-blend-lighten' : ''
+                  }`}
                 />
               </div>
               <div>

@@ -106,8 +106,8 @@
 /* ── Fairy light bulb twinkle ── */
 .fairy-bulb {
   position: absolute;
-  width: 7px;
-  height: 10px;
+  width: 4.5px;
+  height: 6.5px;
   border-radius: 50% 50% 45% 45%;
   transform: translateX(-50%);
   animation: bulbTwinkle 2s ease-in-out infinite alternate;
