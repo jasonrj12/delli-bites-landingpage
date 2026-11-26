@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
+import TextAnimation from './ui/scroll-text';
 
 export default function ContactSection() {
   return (
@@ -13,8 +14,8 @@ export default function ContactSection() {
             LOCATION & CONTACT
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#f5f0e6] leading-[1.12]">
-            Find Us on <br />
-            <span className="italic text-[#e59a35]">Windsor Street</span>
+            <TextAnimation as="span" text="Find Us on" direction="up" /> <br />
+            <TextAnimation as="span" text="Windsor Street" direction="left" classname="italic text-[#e59a35]" />
           </h2>
           <p className="text-base text-[#9b9185] font-light max-w-xl">
             Located in the historic centre of Uxbridge town. Join us for lunch, dinner or takeaway.

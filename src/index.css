@@ -81,3 +81,47 @@
 .animate-dot-pulse {
   animation: dotPulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* ─── Christmas Atmosphere ──────────────────────────────────────────────────── */
+
+/* Subtle frost shimmer on the scrollbar thumb during the festive period */
+::-webkit-scrollbar-thumb {
+  background: #231b15;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #8b1c1c, #d97706);
+}
+
+/* Soft Christmas glow keyframe for the banner text */
+@keyframes christmasGlow {
+  0%, 100% { text-shadow: 0 0 8px rgba(229,154,53,0.0); }
+  50%       { text-shadow: 0 0 14px rgba(229,154,53,0.55); }
+}
+
+.christmas-glow {
+  animation: christmasGlow 3s ease-in-out infinite;
+}
+
+/* ── Fairy light bulb twinkle ── */
+.fairy-bulb {
+  position: absolute;
+  width: 7px;
+  height: 10px;
+  border-radius: 50% 50% 45% 45%;
+  transform: translateX(-50%);
+  animation: bulbTwinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes bulbTwinkle {
+  0%   { opacity: 1;    filter: brightness(1.1); }
+  40%  { opacity: 0.35; filter: brightness(0.4); }
+  70%  { opacity: 0.9;  filter: brightness(1); }
+  100% { opacity: 0.2;  filter: brightness(0.3); }
+}
+
+/* ── Cursor trail snowflake fade ── */
+@keyframes xmasFlakeFade {
+  0%   { opacity: 1;  transform: translate(-50%, -50%) translateY(0px)   scale(1);   }
+  100% { opacity: 0;  transform: translate(-50%, -50%) translateY(-22px) scale(0.5); }
+}

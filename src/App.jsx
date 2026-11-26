@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import ChristmasEffects from './components/ChristmasEffects';
 import TrustBadges from './components/TrustBadges';
 import ExperienceStory from './components/ExperienceStory';
 import ChefSection from './components/ChefSection';
@@ -16,6 +17,9 @@ import ScrollToTop from './components/ScrollToTop';
 export default function App() {
   return (
     <div className="min-h-screen bg-[#0e0b09] text-[#f5f0e6] relative selection:bg-[#d97706] selection:text-black">
+
+      {/* Christmas atmosphere: snowfall + festive banner */}
+      <ChristmasEffects />
 
       {/* Page load animation */}
       <PageLoader />

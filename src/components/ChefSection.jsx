@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Award, Crown, Sparkles, Star, Utensils, ShieldCheck } from 'lucide-react';
 import { CHEF_INFO, DRIVE_CDN } from '../data/restaurantData';
+import TextAnimation from './ui/scroll-text';
 
 export default function ChefSection() {
   const [activeTab, setActiveTab] = useState(0);
@@ -84,8 +85,8 @@ export default function ChefSection() {
             </div>
 
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#f5f0e6] leading-[1.08] tracking-tight">
-              Culinary Masters <br />
-              <span className="italic font-normal text-[#e59a35] font-serif">Behind Our Cuisine</span>
+              <TextAnimation as="span" text="Culinary Masters" direction="up" /> <br />
+              <TextAnimation as="span" text="Behind Our Cuisine" direction="left" classname="italic font-normal text-[#e59a35] font-serif" />
             </h2>
           </div>
 
@@ -205,28 +206,6 @@ export default function ChefSection() {
                   </div>
                 </div>
 
-              </div>
-
-              {/* Mobile Fallback: Elegant inline display on touch devices */}
-              <div className="sm:hidden mt-4 rounded-xl overflow-hidden border border-white/10 shadow-lg bg-[#14100c]">
-                <div className="relative aspect-[16/11]">
-                  <img
-                    src={DRIVE_CDN(CHEF_INFO.images.kitchen)}
-                    alt="Chef Deepak Singh Dhami culinary spread at Delli Bites"
-                    className="w-full h-full object-cover filter contrast-[1.05]"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-left">
-                    <span className="text-[11px] uppercase tracking-[0.2em] text-[#f5f0e6] font-medium flex items-center gap-1.5">
-                      <Utensils className="w-3 h-3 text-[#d97706]" />
-                      Crafted with Passion
-                    </span>
-                    <span className="text-[10px] text-[#e59a35] uppercase tracking-wider font-semibold">
-                      Windsor St
-                    </span>
-                  </div>
-                </div>
               </div>
 
             </div>

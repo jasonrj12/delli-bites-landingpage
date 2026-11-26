@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
 import { GALLERY_IMAGES, DRIVE_CDN } from '../data/restaurantData';
+import TextAnimation from './ui/scroll-text';
 
 function WordReveal({ text, className = '', delayStart = 60, tag = '' }) {
   const words = text ? text.split(' ') : [];
@@ -73,8 +74,8 @@ export default function FeastGallery() {
             THE FEAST
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#f5f0e6] leading-[1.12]">
-            Your Table, Your Taste, <br />
-            <span className="italic text-[#e59a35]">Your Experience</span>
+            <TextAnimation as="span" text="Your Table, Your Taste," direction="up" /> <br />
+            <TextAnimation as="span" text="Your Experience" direction="left" classname="italic text-[#e59a35]" />
           </h2>
           <p className="text-base text-[#9b9185] font-light max-w-xl">
             Take your taste buds on a journey through vibrant spices, delicious combinations and unforgettable Indian favourites.

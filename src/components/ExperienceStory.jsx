@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { RESTAURANT_INFO, DRIVE_CDN } from '../data/restaurantData';
+import TextAnimation from './ui/scroll-text';
 
 export default function ExperienceStory() {
   return (
@@ -18,8 +19,8 @@ export default function ExperienceStory() {
               </span>
               
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#f5f0e6] leading-[1.12]">
-                Experience the True Taste of India <br />
-                <span className="italic text-[#e59a35]">in Uxbridge</span>
+                <TextAnimation as="span" text="Experience the True Taste of India" direction="up" /> <br />
+                <TextAnimation as="span" text="in Uxbridge" direction="left" classname="italic text-[#e59a35]" />
               </h2>
             </div>
 

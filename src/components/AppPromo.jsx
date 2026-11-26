@@ -1,5 +1,6 @@
 import React from 'react';
 import { RESTAURANT_INFO, DRIVE_CDN } from '../data/restaurantData';
+import TextAnimation from './ui/scroll-text';
 
 export default function AppPromo() {
   return (
@@ -17,8 +18,8 @@ export default function AppPromo() {
               </span>
               
               <h2 className="font-serif text-3xl sm:text-5xl font-normal text-[#f5f0e6] leading-[1.08]">
-                More Food. Less Fees. <br />
-                <span className="italic text-[#e59a35]">More Savings.</span>
+                <TextAnimation as="span" text="More Food. Less Fees." direction="up" /> <br />
+                <TextAnimation as="span" text="More Savings." direction="left" classname="italic text-[#e59a35]" />
               </h2>
             </div>
 

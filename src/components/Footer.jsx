@@ -161,8 +161,24 @@ export default function Footer() {
         </div>
 
         {/* Bottom Legal Line */}
-        <div className="pt-8 text-center sm:text-left text-xs text-[#736a5f]">
-          © {currentYear} Delli Bites
+        <div className="pt-8 pb-6 sm:pb-0 sm:pr-16 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-xs text-[#736a5f]">
+          <span>© {currentYear} Delli Bites</span>
+          <span className="inline-flex items-center gap-2">
+            <span>Developed by</span>
+            <a
+              href="https://delivergate.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Delivergate"
+              className="inline-flex items-center transition-all hover:opacity-90 hover:scale-[1.03]"
+            >
+              <img
+                src="/assets/img/dglogo.png"
+                alt="Delivergate"
+                className="h-5 w-auto object-contain"
+              />
+            </a>
+          </span>
         </div>
 
       </div>

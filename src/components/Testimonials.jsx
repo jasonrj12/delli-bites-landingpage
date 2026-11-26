@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { REVIEWS, RESTAURANT_INFO } from '../data/restaurantData';
+import TextAnimation from './ui/scroll-text';
 
 export default function Testimonials() {
   return (
@@ -14,8 +15,8 @@ export default function Testimonials() {
               GUEST WORDS & EXPERIENCES
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#f5f0e6] leading-[1.12]">
-              The Love Behind <br />
-              <span className="italic text-[#e59a35]">Every Visit</span>
+              <TextAnimation as="span" text="The Love Behind" direction="up" /> <br />
+              <TextAnimation as="span" text="Every Visit" direction="left" classname="italic text-[#e59a35]" />
             </h2>
             <p className="text-base text-[#9b9185] font-light">
               Real experiences, heartfelt words and wonderful memories shared by the people who make our restaurant special.

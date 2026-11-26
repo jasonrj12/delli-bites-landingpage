@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, ArrowUpRight, Download } from 'lucide-react';
 import { DRIVE_CDN } from '../data/restaurantData';
+import TextAnimation from './ui/scroll-text';
 
 function WordReveal({ text, className = '', delayStart = 60, tag = '' }) {
   const words = text ? text.split(' ') : [];
@@ -31,6 +32,59 @@ function WordReveal({ text, className = '', delayStart = 60, tag = '' }) {
   );
 }
 
+function SignaturePhotoCard({
+  imageId,
+  alt,
+  tag,
+  title,
+  aspectClass = 'aspect-[16/11]',
+  compact = false,
+  delayStart = 70,
+}) {
+  return (
+    <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-[#17120e] flex flex-col">
+      <div className={`relative ${aspectClass} overflow-hidden`}>
+        <img
+          src={DRIVE_CDN(imageId)}
+          alt={alt}
+          className="w-full h-full object-cover filter contrast-[1.05] transition-transform duration-700 ease-out sm:group-hover:scale-105"
+          loading="lazy"
+        />
+        {/* Hover Ambient Vignette (Desktop) */}
+        <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Word Reveal Common Name on Hover (Desktop) */}
+        <div className={`hidden sm:block absolute ${compact ? 'bottom-4 left-4 right-4' : 'bottom-5 left-5 right-5'} z-20 pointer-events-none`}>
+          <div className={`${compact ? 'p-2.5 sm:p-3 rounded-lg shadow-xl' : 'inline-flex p-3 sm:p-4 rounded-xl shadow-2xl'} bg-black/85 backdrop-blur-md border border-[#d97706]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+            <WordReveal
+              tag={tag}
+              text={title}
+              className={`font-serif ${compact ? 'text-xs sm:text-sm' : 'text-lg sm:text-xl'} text-[#f5f0e6] font-normal leading-tight`}
+              delayStart={delayStart}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Editorial Dish Caption (always visible, tactile luxury menu style) */}
+      <div className={`sm:hidden ${compact ? 'px-3 py-2.5 gap-2.5' : 'px-4 py-3.5 gap-3'} flex-1 bg-gradient-to-r from-[#1c1612] via-[#17120e] to-[#14100c] border-t border-white/10 flex items-center text-left`}>
+        <span
+          className={`w-0.5 ${compact ? 'h-6' : 'h-7'} rounded-full bg-gradient-to-b from-[#e59a35] to-[#d97706]/30 shrink-0`}
+          aria-hidden="true"
+        />
+        <div className="min-w-0">
+          <span className={`block uppercase text-[#e59a35] font-semibold truncate ${compact ? 'text-[8px] tracking-[0.18em]' : 'text-[9px] tracking-[0.22em]'}`}>
+            {tag}
+          </span>
+          <span className={`block font-serif text-[#f5f0e6] leading-snug mt-0.5 ${compact ? 'text-[13px]' : 'text-base'}`}>
+            {title}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function SignatureSelection() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
@@ -43,8 +97,8 @@ export default function SignatureSelection() {
             OUR SIGNATURE SELECTION
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#f5f0e6] leading-[1.12]">
-            Extraordinary Indian Delicacies <br />
-            <span className="italic text-[#e59a35]">& Craft Creations</span>
+            <TextAnimation as="span" text="Extraordinary Indian Delicacies" direction="up" /> <br />
+            <TextAnimation as="span" text="& Craft Creations" direction="left" classname="italic text-[#e59a35]" />
           </h2>
           <p className="text-base text-[#9b9185] font-light max-w-xl">
             Explore extraordinary Indian delicacies and refreshing creations that turn every visit into an experience.
@@ -55,28 +109,12 @@ export default function SignatureSelection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 sm:mb-32">
           
           <div className="lg:col-span-7">
-            <div className="group relative overflow-hidden rounded-xl border border-white/10 aspect-[16/11] bg-[#17120e]">
-              <img
-                src={DRIVE_CDN('1BtyE2erOOW_t3_owbD-azdwwgZ6em9zi')}
-                alt="Our Finest Culinary Creations"
-                className="w-full h-full object-cover filter contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-105"
-                loading="lazy"
-              />
-              {/* Hover Ambient Vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-              {/* Word Reveal Common Name on Hover */}
-              <div className="absolute bottom-5 left-5 right-5 z-20 pointer-events-none">
-                <div className="inline-flex p-3 sm:p-4 rounded-xl bg-black/85 backdrop-blur-md border border-[#d97706]/40 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <WordReveal
-                    tag="Chef's Signature"
-                    text="Butter Chicken & Tandoori Platter"
-                    className="font-serif text-lg sm:text-xl text-[#f5f0e6] font-normal leading-tight"
-                    delayStart={70}
-                  />
-                </div>
-              </div>
-            </div>
+            <SignaturePhotoCard
+              imageId="1BtyE2erOOW_t3_owbD-azdwwgZ6em9zi"
+              alt="Our Finest Culinary Creations"
+              tag="Chef's Signature"
+              title="Butter Chicken & Tandoori Platter"
+            />
           </div>
 
           <div className="lg:col-span-5 space-y-6 text-left">
@@ -113,28 +151,12 @@ export default function SignatureSelection() {
           </div>
 
           <div className="lg:col-span-7 order-1 lg:order-2">
-            <div className="group relative overflow-hidden rounded-xl border border-white/10 aspect-[16/11] bg-[#17120e]">
-              <img
-                src={DRIVE_CDN('1oTaONwC5pejGq1kJpLf5Nbj-0iQxOzrH')}
-                alt="A Celebration of Indian Comfort"
-                className="w-full h-full object-cover filter contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-105"
-                loading="lazy"
-              />
-              {/* Hover Ambient Vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-              {/* Word Reveal Common Name on Hover */}
-              <div className="absolute bottom-5 left-5 right-5 z-20 pointer-events-none">
-                <div className="inline-flex p-3 sm:p-4 rounded-xl bg-black/85 backdrop-blur-md border border-[#d97706]/40 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <WordReveal
-                    tag="Soulful Comfort"
-                    text="Kashmiri Roganjosh & Dum Biryani"
-                    className="font-serif text-lg sm:text-xl text-[#f5f0e6] font-normal leading-tight"
-                    delayStart={70}
-                  />
-                </div>
-              </div>
-            </div>
+            <SignaturePhotoCard
+              imageId="1oTaONwC5pejGq1kJpLf5Nbj-0iQxOzrH"
+              alt="A Celebration of Indian Comfort"
+              tag="Soulful Comfort"
+              title="Kashmiri Roganjosh & Dum Biryani"
+            />
           </div>
 
         </div>
@@ -143,50 +165,26 @@ export default function SignatureSelection() {
         <div id="drinks" className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="group relative overflow-hidden rounded-xl border border-white/10 aspect-[4/5] bg-[#17120e]">
-                <img
-                  src={DRIVE_CDN('1gdp5HBEufUTAJNLIUWSefuQhtkt6ocqV')}
-                  alt="Craft Cocktail at Delli Bites"
-                  className="w-full h-full object-cover filter contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                
-                {/* Word Reveal on Hover */}
-                <div className="absolute bottom-4 left-4 right-4 z-20 pointer-events-none">
-                  <div className="p-2.5 sm:p-3 rounded-lg bg-black/85 backdrop-blur-md border border-[#d97706]/40 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <WordReveal
-                      tag="Craft Cocktail"
-                      text="Artisanal Spice-Infused Cocktail"
-                      className="font-serif text-xs sm:text-sm text-[#f5f0e6] leading-tight"
-                      delayStart={60}
-                    />
-                  </div>
-                </div>
-              </div>
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 items-stretch">
+              <SignaturePhotoCard
+                imageId="1gdp5HBEufUTAJNLIUWSefuQhtkt6ocqV"
+                alt="Craft Cocktail at Delli Bites"
+                tag="Craft Cocktail"
+                title="Artisanal Spice-Infused Cocktail"
+                aspectClass="aspect-[4/5]"
+                compact
+                delayStart={60}
+              />
 
-              <div className="group relative overflow-hidden rounded-xl border border-white/10 aspect-[4/5] bg-[#17120e]">
-                <img
-                  src={DRIVE_CDN('1op0EH9CmUa4jCoFk4f-6u_0GvvAs_7Ct')}
-                  alt="Premium Spirits & Wine Selection"
-                  className="w-full h-full object-cover filter contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                
-                {/* Word Reveal on Hover */}
-                <div className="absolute bottom-4 left-4 right-4 z-20 pointer-events-none">
-                  <div className="p-2.5 sm:p-3 rounded-lg bg-black/85 backdrop-blur-md border border-[#d97706]/40 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <WordReveal
-                      tag="Cellar Selection"
-                      text="Fine Wine & Premium Spirits"
-                      className="font-serif text-xs sm:text-sm text-[#f5f0e6] leading-tight"
-                      delayStart={60}
-                    />
-                  </div>
-                </div>
-              </div>
+              <SignaturePhotoCard
+                imageId="1op0EH9CmUa4jCoFk4f-6u_0GvvAs_7Ct"
+                alt="Premium Spirits & Wine Selection"
+                tag="Cellar Selection"
+                title="Fine Wine & Premium Spirits"
+                aspectClass="aspect-[4/5]"
+                compact
+                delayStart={60}
+              />
             </div>
           </div>
 
