@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { X, ArrowUpRight, Download } from 'lucide-react';
 import { DRIVE_CDN } from '../data/restaurantData';
 import TextAnimation from './ui/scroll-text';
@@ -85,6 +85,157 @@ function SignaturePhotoCard({
   );
 }
 
+// ─── Chapters data ────────────────────────────────────────────────────────────
+const CHAPTERS = [
+  {
+    id: 'ch1',
+    label: 'Chapter 01 • Curated Favourites',
+    title: 'Our Finest Culinary Creations',
+    body: 'Discover our signature collection of Indian favourites, from rich and creamy Butter Chicken and fiery Chicken 65 to perfectly chargrilled Ajwaini Paneer Tikka and the aromatic, slow-cooked goodness of Kashmiri Lamb Roganjosh. Every dish is a celebration of authentic spices, bold flavours and culinary passion.',
+    imageId: '1BtyE2erOOW_t3_owbD-azdwwgZ6em9zi',
+    imageAlt: 'Our Finest Culinary Creations',
+    tag: "Chef's Signature",
+    photoTitle: 'Butter Chicken & Tandoori Platter',
+    type: 'single',
+  },
+  {
+    id: 'ch2',
+    label: 'Chapter 02 • Soulful Cooking',
+    title: 'A Celebration of Indian Comfort',
+    body: 'Experience the soul of Indian cuisine through rich curries, aromatic spices and lovingly prepared delicacies. From traditional favourites to unique house creations, every dish brings together authentic flavours, passion and a little taste of home.',
+    imageId: '1oTaONwC5pejGq1kJpLf5Nbj-0iQxOzrH',
+    imageAlt: 'A Celebration of Indian Comfort',
+    tag: 'Soulful Comfort',
+    photoTitle: 'Kashmiri Roganjosh & Dum Biryani',
+    type: 'single',
+  },
+  {
+    id: 'ch3',
+    label: 'Chapter 03 • Cellar & Bar',
+    title: 'The Perfect Pour, Every Time',
+    body: 'Enjoy an impressive selection of refreshing beverages, premium spirits, fine wines and international favourites. Beautifully served and thoughtfully selected to complement every occasion.',
+    type: 'duo',
+    duo: [
+      { imageId: '1gdp5HBEufUTAJNLIUWSefuQhtkt6ocqV', alt: 'Craft Cocktail at Delli Bites', tag: 'Craft Cocktail', title: 'Artisanal Spice-Infused Cocktail' },
+      { imageId: '1op0EH9CmUa4jCoFk4f-6u_0GvvAs_7Ct', alt: 'Premium Spirits & Wine Selection', tag: 'Cellar Selection', title: 'Fine Wine & Premium Spirits' },
+    ],
+  },
+];
+
+// ─── Sticky Scroll Section ─────────────────────────────────────────────────────
+function StickyScrollSection({ chapters }) {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const itemRefs = useRef([]);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const observers = chapters.map((_, i) => {
+      const el = itemRefs.current[i];
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveIdx(i);
+        },
+        { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
+      );
+      obs.observe(el);
+      return obs;
+    });
+    return () => observers.forEach((o) => o?.disconnect());
+  }, [chapters]);
+
+  const active = chapters[activeIdx];
+
+  return (
+    <div ref={containerRef} className="hidden lg:flex gap-16 xl:gap-24 items-start">
+
+      {/* ── Left: sticky image panel ── */}
+      <div className="w-[52%] sticky top-28 self-start">
+        <div className="relative">
+          {chapters.map((ch, i) => (
+            <div
+              key={ch.id}
+              className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                i === activeIdx
+                  ? 'opacity-100 translate-y-0 scale-100'
+                  : 'opacity-0 translate-y-4 scale-[0.98] absolute inset-0 pointer-events-none'
+              }`}
+            >
+              {ch.type === 'single' ? (
+                <SignaturePhotoCard
+                  imageId={ch.imageId}
+                  alt={ch.imageAlt}
+                  tag={ch.tag}
+                  title={ch.photoTitle}
+                />
+              ) : (
+                <div className="grid grid-cols-2 gap-4">
+                  {ch.duo.map((d) => (
+                    <SignaturePhotoCard
+                      key={d.imageId}
+                      imageId={d.imageId}
+                      alt={d.alt}
+                      tag={d.tag}
+                      title={d.title}
+                      aspectClass="aspect-[4/5]"
+                      compact
+                      delayStart={60}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* Chapter progress dots */}
+          <div className="absolute -right-6 top-1/2 -translate-y-1/2 flex flex-col gap-2.5">
+            {chapters.map((_, i) => (
+              <span
+                key={i}
+                className={`block rounded-full transition-all duration-400 ${
+                  i === activeIdx
+                    ? 'w-1.5 h-6 bg-[#d97706]'
+                    : 'w-1.5 h-1.5 bg-white/20'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Right: scrollable text chapters ── */}
+      <div className="flex-1 flex flex-col">
+        {chapters.map((ch, i) => (
+          <div
+            key={ch.id}
+            ref={(el) => (itemRefs.current[i] = el)}
+            className={`min-h-[70vh] flex flex-col justify-center py-16 space-y-6 transition-all duration-500 ${
+              i === activeIdx ? 'opacity-100' : 'opacity-30'
+            }`}
+          >
+            {/* Chapter marker */}
+            <div className="flex items-center gap-3">
+              <span className={`block w-6 h-px transition-all duration-500 ${i === activeIdx ? 'bg-[#d97706] w-10' : 'bg-white/20'}`} />
+              <span className="text-[11px] uppercase tracking-[0.22em] text-[#9b9185]">
+                {ch.label}
+              </span>
+            </div>
+
+            <h3 className="font-serif text-3xl xl:text-4xl text-[#f5f0e6] leading-tight">
+              {ch.title}
+            </h3>
+
+            <p className="text-base text-[#c9c0b3] font-light leading-relaxed max-w-md">
+              {ch.body}
+            </p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  );
+}
+
 export default function SignatureSelection() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
@@ -105,67 +256,49 @@ export default function SignatureSelection() {
           </p>
         </div>
 
-        {/* 1. Our Finest Culinary Creations */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 sm:mb-32">
-          
-          <div className="lg:col-span-7">
+        {/* ── Desktop: Sticky scroll layout ── */}
+        <StickyScrollSection chapters={CHAPTERS} />
+
+        {/* ── Mobile / tablet: stacked layout (unchanged feel) ── */}
+        <div className="lg:hidden space-y-20">
+
+          {/* 1 */}
+          <div className="space-y-6">
             <SignaturePhotoCard
               imageId="1BtyE2erOOW_t3_owbD-azdwwgZ6em9zi"
               alt="Our Finest Culinary Creations"
               tag="Chef's Signature"
               title="Butter Chicken & Tandoori Platter"
             />
+            <div className="space-y-3">
+              <span className="text-[11px] uppercase tracking-[0.22em] text-[#9b9185] block">Chapter 01 • Curated Favourites</span>
+              <h3 className="font-serif text-2xl text-[#f5f0e6] leading-tight">Our Finest Culinary Creations</h3>
+              <p className="text-sm text-[#c9c0b3] font-light leading-relaxed">
+                Discover our signature collection of Indian favourites, from rich and creamy Butter Chicken and fiery Chicken 65 to perfectly chargrilled Ajwaini Paneer Tikka and the aromatic, slow-cooked goodness of Kashmiri Lamb Roganjosh.
+              </p>
+            </div>
           </div>
 
-          <div className="lg:col-span-5 space-y-6 text-left">
-            <span className="text-xs uppercase tracking-[0.2em] text-[#9b9185] block">
-              Chapter 01 • Curated Favourites
-            </span>
-
-            <h3 className="font-serif text-2xl sm:text-3xl text-[#f5f0e6] leading-tight">
-              Our Finest Culinary Creations
-            </h3>
-
-            <p className="text-base text-[#c9c0b3] font-light leading-relaxed">
-              Discover our signature collection of Indian favourites, from rich and creamy Butter Chicken and fiery Chicken 65 to perfectly chargrilled Ajwaini Paneer Tikka and the aromatic, slow-cooked goodness of Kashmiri Lamb Roganjosh. Every dish is a celebration of authentic spices, bold flavours and culinary passion.
-            </p>
-          </div>
-
-        </div>
-
-        {/* 2. A Celebration of Indian Comfort */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 sm:mb-32">
-          
-          <div className="lg:col-span-5 order-2 lg:order-1 space-y-6 text-left">
-            <span className="text-xs uppercase tracking-[0.2em] text-[#9b9185] block">
-              Chapter 02 • Soulful Cooking
-            </span>
-
-            <h3 className="font-serif text-2xl sm:text-3xl text-[#f5f0e6] leading-tight">
-              A Celebration of Indian Comfort
-            </h3>
-
-            <p className="text-base text-[#c9c0b3] font-light leading-relaxed">
-              Experience the soul of Indian cuisine through rich curries, aromatic spices and lovingly prepared delicacies. From traditional favourites to unique house creations, every dish brings together authentic flavours, passion and a little taste of home.
-            </p>
-          </div>
-
-          <div className="lg:col-span-7 order-1 lg:order-2">
+          {/* 2 */}
+          <div className="space-y-6">
             <SignaturePhotoCard
               imageId="1oTaONwC5pejGq1kJpLf5Nbj-0iQxOzrH"
               alt="A Celebration of Indian Comfort"
               tag="Soulful Comfort"
               title="Kashmiri Roganjosh & Dum Biryani"
             />
+            <div className="space-y-3">
+              <span className="text-[11px] uppercase tracking-[0.22em] text-[#9b9185] block">Chapter 02 • Soulful Cooking</span>
+              <h3 className="font-serif text-2xl text-[#f5f0e6] leading-tight">A Celebration of Indian Comfort</h3>
+              <p className="text-sm text-[#c9c0b3] font-light leading-relaxed">
+                Experience the soul of Indian cuisine through rich curries, aromatic spices and lovingly prepared delicacies. From traditional favourites to unique house creations, every dish brings together authentic flavours, passion and a little taste of home.
+              </p>
+            </div>
           </div>
 
-        </div>
-
-        {/* 3. The Perfect Pour, Every Time */}
-        <div id="drinks" className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 items-stretch">
+          {/* 3 */}
+          <div id="drinks" className="space-y-6">
+            <div className="grid grid-cols-2 gap-3">
               <SignaturePhotoCard
                 imageId="1gdp5HBEufUTAJNLIUWSefuQhtkt6ocqV"
                 alt="Craft Cocktail at Delli Bites"
@@ -175,7 +308,6 @@ export default function SignatureSelection() {
                 compact
                 delayStart={60}
               />
-
               <SignaturePhotoCard
                 imageId="1op0EH9CmUa4jCoFk4f-6u_0GvvAs_7Ct"
                 alt="Premium Spirits & Wine Selection"
@@ -186,20 +318,13 @@ export default function SignatureSelection() {
                 delayStart={60}
               />
             </div>
-          </div>
-
-          <div className="lg:col-span-5 space-y-6 text-left">
-            <span className="text-xs uppercase tracking-[0.2em] text-[#9b9185] block">
-              Chapter 03 • Cellar & Bar
-            </span>
-
-            <h3 className="font-serif text-2xl sm:text-3xl text-[#f5f0e6] leading-tight">
-              The Perfect Pour, Every Time
-            </h3>
-
-            <p className="text-base text-[#c9c0b3] font-light leading-relaxed">
-              Enjoy an impressive selection of refreshing beverages, premium spirits, fine wines and international favourites. Beautifully served and thoughtfully selected to complement every occasion.
-            </p>
+            <div className="space-y-3">
+              <span className="text-[11px] uppercase tracking-[0.22em] text-[#9b9185] block">Chapter 03 • Cellar & Bar</span>
+              <h3 className="font-serif text-2xl text-[#f5f0e6] leading-tight">The Perfect Pour, Every Time</h3>
+              <p className="text-sm text-[#c9c0b3] font-light leading-relaxed">
+                Enjoy an impressive selection of refreshing beverages, premium spirits, fine wines and international favourites. Beautifully served and thoughtfully selected to complement every occasion.
+              </p>
+            </div>
           </div>
 
         </div>

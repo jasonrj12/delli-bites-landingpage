@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu as MenuIcon, X, ArrowUpRight } from 'lucide-react';
+import { Menu as MenuIcon, X, ArrowUpRight, ShoppingBag } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 import { isChristmasSeason, getBrandLogo } from '../lib/christmasUtils';
 
@@ -95,9 +95,11 @@ export default function Navbar() {
               href={RESTAURANT_INFO.links.orderOnline}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-black bg-[#d97706]"
+              aria-label="Order Online"
+              title="Order Online"
+              className="w-9 h-9 rounded-full flex items-center justify-center text-black bg-[#d97706] hover:bg-[#e59a35] transition-colors shadow-sm"
             >
-              Order
+              <ShoppingBag className="w-4 h-4" />
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
